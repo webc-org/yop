@@ -18,16 +18,9 @@ export function Image({
   const imageClass = clsx(styles.image, !caption && className)
 
   const img = asChild ? (
-    <Slot className={imageClass}>
-      {children}
-    </Slot>
+    <Slot className={imageClass}>{children}</Slot>
   ) : (
-    <img
-      ref={ref}
-      className={imageClass}
-      alt={alt}
-      {...props}
-    />
+    <img ref={ref} className={imageClass} alt={alt} {...props} />
   )
 
   if (caption) {

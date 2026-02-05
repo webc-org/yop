@@ -38,7 +38,11 @@ describe('Video', () => {
 
   it('applies className', () => {
     render(
-      <Video src="test.mp4" className="aspect-video r-3" data-testid="video" />
+      <Video
+        src="test.mp4"
+        className="aspect-video r-3"
+        data-testid="video"
+      />
     )
     expect(screen.getByTestId('video')).toHaveClass('aspect-video')
     expect(screen.getByTestId('video')).toHaveClass('r-3')

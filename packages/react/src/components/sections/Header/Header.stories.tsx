@@ -14,7 +14,6 @@ import {
 import {
   Banner,
   BannerActions,
-  BannerBody,
   BannerContent,
   BannerSubtitle,
   BannerTitle,
@@ -236,10 +235,10 @@ export const Default: Story = {
         <HeaderMainLogo>
           <Logo href="/">
             <Image
-              src="/logoipsum-350.svg"
-              alt="Acme Logo"
-              width={144}
-              height={40}
+              src="/YOP_black.svg"
+              alt="Yop Logo"
+              width={81}
+              height={28}
             />
           </Logo>
         </HeaderMainLogo>
@@ -276,10 +275,10 @@ export const Default: Story = {
           <HeaderMobileLogo>
             <Logo href="/">
               <Image
-                src="/logoipsum-350.svg"
-                alt="Acme Logo"
-                width={144}
-                height={40}
+                src="/YOP_black.svg"
+                alt="Yop Logo"
+                width={81}
+                height={28}
               />
             </Logo>
           </HeaderMobileLogo>
@@ -315,10 +314,10 @@ export const WithTopBar: Story = {
         <HeaderMainLogo>
           <Logo href="/">
             <Image
-              src="/logoipsum-350.svg"
-              alt="Acme Logo"
-              width={144}
-              height={40}
+              src="/YOP_black.svg"
+              alt="Yop Logo"
+              width={81}
+              height={28}
             />
           </Logo>
         </HeaderMainLogo>
@@ -349,10 +348,10 @@ export const WithTopBar: Story = {
           <HeaderMobileLogo>
             <Logo href="/">
               <Image
-                src="/logoipsum-350.svg"
-                alt="Acme Logo"
-                width={144}
-                height={40}
+                src="/YOP_black.svg"
+                alt="Yop Logo"
+                width={81}
+                height={28}
               />
             </Logo>
           </HeaderMobileLogo>
@@ -371,10 +370,10 @@ export const WithDropdowns: Story = {
         <HeaderMainLogo>
           <Logo href="/">
             <Image
-              src="/logoipsum-350.svg"
-              alt="Acme Logo"
-              width={144}
-              height={40}
+              src="/YOP_black.svg"
+              alt="Yop Logo"
+              width={81}
+              height={28}
             />
           </Logo>
         </HeaderMainLogo>
@@ -406,10 +405,10 @@ export const WithDropdowns: Story = {
           <HeaderMobileLogo>
             <Logo href="/">
               <Image
-                src="/logoipsum-350.svg"
-                alt="Acme Logo"
-                width={144}
-                height={40}
+                src="/YOP_black.svg"
+                alt="Yop Logo"
+                width={81}
+                height={28}
               />
             </Logo>
           </HeaderMobileLogo>
@@ -428,10 +427,10 @@ export const MegaMenu: Story = {
         <HeaderMainLogo>
           <Logo href="/">
             <Image
-              src="/logoipsum-358.svg"
-              alt="Acme Logo"
-              width={144}
-              height={40}
+              src="/YOP_black.svg"
+              alt="Yop Logo"
+              width={81}
+              height={28}
             />
           </Logo>
         </HeaderMainLogo>
@@ -466,10 +465,10 @@ export const MegaMenu: Story = {
           <HeaderMobileLogo>
             <Logo href="/">
               <Image
-                src="/logoipsum-359.svg"
-                alt="Acme Logo"
-                width={144}
-                height={40}
+                src="/YOP_black.svg"
+                alt="Yop Logo"
+                width={81}
+                height={28}
               />
             </Logo>
           </HeaderMobileLogo>
@@ -506,10 +505,10 @@ export const TransparentHero: Story = {
           <HeaderMainLogo>
             <Logo href="/">
               <Image
-                src="/logoipsum-350.svg"
-                alt="Acme Logo"
-                width={144}
-                height={40}
+                src="/YOP_black.svg"
+                alt="Yop Logo"
+                width={81}
+                height={28}
               />
             </Logo>
           </HeaderMainLogo>
@@ -539,10 +538,10 @@ export const TransparentHero: Story = {
             <HeaderMobileLogo>
               <Logo href="/">
                 <Image
-                  src="/logoipsum-350.svg"
-                  alt="Acme Logo"
-                  width={144}
-                  height={40}
+                  src="/YOP_black.svg"
+                  alt="Yop Logo"
+                  width={81}
+                  height={28}
                 />
               </Logo>
             </HeaderMobileLogo>
@@ -617,10 +616,10 @@ export const TransparentDarkText: Story = {
           <HeaderMainLogo>
             <Logo href="/">
               <Image
-                src="/logoipsum-350.svg"
-                alt="Acme Logo"
-                width={144}
-                height={40}
+                src="/YOP_black.svg"
+                alt="Yop Logo"
+                width={81}
+                height={28}
               />
             </Logo>
           </HeaderMainLogo>
@@ -650,10 +649,10 @@ export const TransparentDarkText: Story = {
             <HeaderMobileLogo>
               <Logo href="/">
                 <Image
-                  src="/logoipsum-350.svg"
-                  alt="Acme Logo"
-                  width={144}
-                  height={40}
+                  src="/YOP_black.svg"
+                  alt="Yop Logo"
+                  width={81}
+                  height={28}
                 />
               </Logo>
             </HeaderMobileLogo>
@@ -691,9 +690,9 @@ export const TransparentDarkText: Story = {
           <SectionTitle level="h2">Below the Fold</SectionTitle>
         </SectionHeader>
         <p>
-          Scroll up and down to see the header transition between transparent
-          and solid states. The header becomes solid once you scroll past the
-          hero section.
+          Scroll up and down to see the header transition between
+          transparent and solid states. The header becomes solid once you
+          scroll past the hero section.
         </p>
       </Section>
     </>

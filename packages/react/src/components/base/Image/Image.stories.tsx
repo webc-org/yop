@@ -95,7 +95,13 @@ export const CaptionWithLink: Story = {
   },
 }
 
-const fitOptions = ['cover', 'contain', 'fill', 'none', 'scale-down'] as const
+const fitOptions = [
+  'cover',
+  'contain',
+  'fill',
+  'none',
+  'scale-down',
+] as const
 
 export const ObjectFitCover: Story = {
   render: () => (
@@ -229,7 +235,14 @@ export const AspectRatios: Story = {
         gap: '1rem',
       }}
     >
-      {(['aspect-square', 'aspect-4-3', 'aspect-video', 'aspect-3-2'] as const).map((cls) => (
+      {(
+        [
+          'aspect-square',
+          'aspect-4-3',
+          'aspect-video',
+          'aspect-3-2',
+        ] as const
+      ).map((cls) => (
         <div key={cls}>
           <p style={{ marginBottom: '0.5rem', fontSize: '1.4rem' }}>
             {cls}

@@ -35,10 +35,10 @@ export const DashboardPage: Story = {
         <DashboardBrand>
           <Logo href="/">
             <Image
-              src="/logoipsum-358.svg"
-              alt="Acme Logo"
-              width={415}
-              height={109}
+              src="/YOP_black.svg"
+              alt="Yop Logo"
+              width={81}
+              height={28}
             />
           </Logo>
         </DashboardBrand>

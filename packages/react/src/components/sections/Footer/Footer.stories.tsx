@@ -119,10 +119,10 @@ export const WithLogo: Story = {
         <FooterMainLogo>
           <Logo href="/">
             <Image
-              src="/logoipsum-350.svg"
-              alt="Acme Logo"
-              width={144}
-              height={40}
+              src="/YOP_black.svg"
+              alt="Yop Logo"
+              width={81}
+              height={28}
             />
           </Logo>
         </FooterMainLogo>
