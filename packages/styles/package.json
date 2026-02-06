@@ -1,6 +1,6 @@
 {
   "name": "@yop/styles",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Yop design system styles",
   "main": "dist/index.css",
   "files": [

@@ -135,7 +135,7 @@ jobs:
       - name: Check if @yop/styles version exists
         id: check_styles
         run: |
-          if npm view @yop/styles@${{ steps.styles_version.outputs.VERSION }} version 2>/dev/null; then
+          if npm view @yop/styles@${{ steps.styles_version.outputs.VERSION }} version --registry=https://npm.pkg.github.com 2>/dev/null; then
             echo "EXISTS=true" >> $GITHUB_OUTPUT
           else
             echo "EXISTS=false" >> $GITHUB_OUTPUT
@@ -147,7 +147,7 @@ jobs:
       - name: Check if @yop/react version exists
         id: check_react
         run: |
-          if npm view @yop/react@${{ steps.react_version.outputs.VERSION }} version 2>/dev/null; then
+          if npm view @yop/react@${{ steps.react_version.outputs.VERSION }} version --registry=https://npm.pkg.github.com 2>/dev/null; then
             echo "EXISTS=true" >> $GITHUB_OUTPUT
           else
             echo "EXISTS=false" >> $GITHUB_OUTPUT
