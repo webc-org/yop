@@ -552,6 +552,7 @@ $tx-color-transparent-dark: var(--color-black);
   padding: 1rem 1.5rem;
   text-align: left;
   width: 100%;
+  text-decoration: none;
 
   &.isOpen {
     background-color: $bg-color-mobile-dropdown;
@@ -561,7 +562,6 @@ $tx-color-transparent-dark: var(--color-black);
   &:focus-visible {
     background-color: $bg-color-mobile-link-active;
     color: $tx-color-mobile-link-active;
-    text-decoration: none;
   }
 }
 
@@ -588,7 +588,6 @@ $tx-color-transparent-dark: var(--color-black);
   border-radius: var(--radius-2);
   color: $tx-color-link;
   display: block;
-  font-size: var(--font-size-3);
   padding: 1rem 2rem;
   text-decoration: none;
 
@@ -654,10 +653,11 @@ $tx-color-transparent-dark: var(--color-black);
 
     .topLink,
     .topTrigger,
+    .top .chevron,
     .mainLink,
+    .main .chevron,
     .mainDropdownTrigger,
-    .mobileToggle,
-    .chevron {
+    .mobileBar .mobileToggle {
       color: $tx-color-transparent-light;
     }
 
