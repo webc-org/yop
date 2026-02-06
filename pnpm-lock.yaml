@@ -26,7 +26,7 @@ importers:
 
   apps/storybook-react:
     dependencies:
-      '@yop/react':
+      '@pushui/react':
         specifier: workspace:*
         version: link:../../packages/react
     devDependencies:
