@@ -158,13 +158,13 @@ jobs:
 
       - name: Publish @yop/styles
         if: steps.check_styles.outputs.EXISTS != 'true'
-        run: npm publish --workspace=@yop/styles
+        run: pnpm --filter @yop/styles publish --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish @yop/react
         if: steps.check_react.outputs.EXISTS != 'true'
-        run: npm publish --workspace=@yop/react
+        run: pnpm --filter @yop/react publish --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

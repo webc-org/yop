@@ -55,9 +55,9 @@ echo -e "${GREEN}[4/5] Bumping versions...${NC}"
 cd packages/styles
 CURRENT_PATCH=$(node -p "require('./package.json').version.split('.')[2]")
 if [ "$CURRENT_PATCH" -ge 99 ]; then
-  npm version minor --no-git-tag-version > /dev/null
+  pnpm version minor --no-git-tag-version > /dev/null
 else
-  npm version patch --no-git-tag-version > /dev/null
+  pnpm version patch --no-git-tag-version > /dev/null
 fi
 STYLES_VERSION=$(node -p "require('./package.json').version")
 echo -e "  @yop/styles: ${YELLOW}${STYLES_VERSION}${NC}"
@@ -67,9 +67,9 @@ cd ../..
 cd packages/react
 CURRENT_PATCH=$(node -p "require('./package.json').version.split('.')[2]")
 if [ "$CURRENT_PATCH" -ge 99 ]; then
-  npm version minor --no-git-tag-version > /dev/null
+  pnpm version minor --no-git-tag-version > /dev/null
 else
-  npm version patch --no-git-tag-version > /dev/null
+  pnpm version patch --no-git-tag-version > /dev/null
 fi
 REACT_VERSION=$(node -p "require('./package.json').version")
 echo -e "  @yop/react:  ${YELLOW}${REACT_VERSION}${NC}"
