@@ -18,7 +18,7 @@ const config: StorybookConfig = {
     options: {},
   },
   viteFinal: async (config) => {
-    config.base = process.env.CI ? '/yop/' : '/'
+    config.base = process.env.CI ? '/pushui/' : '/'
     config.resolve = {
       ...config.resolve,
       alias: {

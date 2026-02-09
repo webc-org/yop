@@ -13,7 +13,7 @@ type Story = StoryObj<typeof Logo>
 export const Playground: Story = {
   render: () => (
     <Logo href="/">
-      <img src="/YOP_black.svg" alt="ACME" />
+      <img src="/pushui_black.svg" alt="Push UI" />
     </Logo>
   ),
 }

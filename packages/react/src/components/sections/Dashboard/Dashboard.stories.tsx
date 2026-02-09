@@ -35,8 +35,8 @@ export const DashboardPage: Story = {
         <DashboardBrand>
           <Logo href="/">
             <Image
-              src="/YOP_black.svg"
-              alt="Yop Logo"
+              src="/pushui_black.svg"
+              alt="Push UI"
               width={81}
               height={28}
             />
