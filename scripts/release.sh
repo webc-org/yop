@@ -28,28 +28,35 @@ if git diff --cached --quiet; then
   exit 0
 fi
 
-echo -e "${GREEN}[1/5] Running tests...${NC}"
+echo -e "${GREEN}[1/6] Linting...${NC}"
+if ! pnpm lint; then
+  echo -e "${RED}Lint failed!${NC}"
+  git reset HEAD . > /dev/null 2>&1
+  exit 1
+fi
+
+echo -e "${GREEN}[2/6] Running tests...${NC}"
 if ! pnpm test; then
   echo -e "${RED}Tests failed!${NC}"
   git reset HEAD . > /dev/null 2>&1
   exit 1
 fi
 
-echo -e "${GREEN}[2/5] Building packages...${NC}"
+echo -e "${GREEN}[3/6] Building packages...${NC}"
 if ! pnpm build > /dev/null 2>&1; then
   echo -e "${RED}Build failed!${NC}"
   git reset HEAD . > /dev/null 2>&1
   exit 1
 fi
 
-echo -e "${GREEN}[3/5] Building storybook...${NC}"
+echo -e "${GREEN}[4/6] Building storybook...${NC}"
 if ! pnpm build-storybook > /dev/null 2>&1; then
   echo -e "${RED}Storybook build failed!${NC}"
   git reset HEAD . > /dev/null 2>&1
   exit 1
 fi
 
-echo -e "${GREEN}[4/5] Bumping versions...${NC}"
+echo -e "${GREEN}[5/6] Bumping versions...${NC}"
 
 # Bump @pushui/styles
 cd packages/styles
@@ -78,7 +85,7 @@ cd ../..
 git add .
 git commit -m "$MESSAGE (v$REACT_VERSION)"
 
-echo -e "${GREEN}[5/5] Pushing...${NC}"
+echo -e "${GREEN}[6/6] Pushing...${NC}"
 if ! git push; then
   echo -e "${RED}Push failed! Rolling back...${NC}"
   git reset --hard HEAD~1

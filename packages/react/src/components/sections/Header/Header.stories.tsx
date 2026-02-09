@@ -46,9 +46,10 @@ import {
 
 function HeaderLogo() {
   const { isTransparent, textColor } = useHeader()
-  const src = isTransparent && textColor === 'light'
-    ? '/YOP_white.svg'
-    : '/YOP_black.svg'
+  const src =
+    isTransparent && textColor === 'light'
+      ? '/YOP_white.svg'
+      : '/YOP_black.svg'
   return (
     <Logo href="/">
       <Image src={src} alt="Push UI" />
