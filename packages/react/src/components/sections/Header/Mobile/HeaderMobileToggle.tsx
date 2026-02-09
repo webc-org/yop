@@ -18,9 +18,9 @@ export function HeaderMobileToggle({
   return (
     <Button
       ref={ref}
-      id={mobileToggleId}
       type="button"
       onClick={toggle}
+      id={mobileToggleId}
       aria-expanded={isOpen}
       aria-controls={mobileMenuId}
       aria-label={label || (isOpen ? closeLabel : menuLabel)}

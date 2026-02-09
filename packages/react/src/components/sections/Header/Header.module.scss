@@ -748,8 +748,8 @@ $tx-color-transparent-dark: var(--color-black);
     .topLink,
     .mainLink,
     .topTrigger,
-    .mobileToggle,
-    .mainDropdownTrigger {
+    .mainDropdownTrigger,
+    .mobileBar .mobileToggle {
       color: $tx-color-link;
     }
 
