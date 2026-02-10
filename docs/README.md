@@ -48,7 +48,7 @@ import '@pushui/react/styles.css'
 
 ```bash
 # Clone
-git clone https://github.com/webc-org/yop.git pushui
+git clone https://github.com/webc-org/pushui.git
 cd pushui
 
 # Install
