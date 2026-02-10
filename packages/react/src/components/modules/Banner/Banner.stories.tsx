@@ -92,11 +92,11 @@ export const Default: Story = {
       <BannerContent textColor="light">
         <BannerTitle>Welcome to Our Platform</BannerTitle>
         <BannerSubtitle>Build something amazing today</BannerSubtitle>
-        <BannerBody>
+        <BannerBody className="mt-3">
           Discover the tools and resources you need to bring your ideas to
           life. Start your journey with us and transform the way you work.
         </BannerBody>
-        <BannerActions>
+        <BannerActions className="mt-4">
           <Button variant="default" contrast appearance="button">
             Get Started
           </Button>
@@ -122,11 +122,11 @@ export const WithBackgroundImage: Story = {
         <BannerSubtitle>
           Adventure awaits beyond the horizon
         </BannerSubtitle>
-        <BannerBody>
+        <BannerBody className="mt-3">
           Experience breathtaking views and unforgettable moments in
           nature's most spectacular landscapes.
         </BannerBody>
-        <BannerActions>
+        <BannerActions className="mt-4">
           <Button variant="primary" contrast appearance="button">
             Book Now
           </Button>
@@ -154,11 +154,11 @@ export const WithBackgroundVideo: Story = {
       <BannerContent textColor="light" textAlign="center">
         <BannerTitle>Cinematic Experience</BannerTitle>
         <BannerSubtitle>Immerse yourself in motion</BannerSubtitle>
-        <BannerBody>
+        <BannerBody className="mt-3">
           Video backgrounds create engaging, dynamic hero sections that
           capture attention instantly.
         </BannerBody>
-        <BannerActions>
+        <BannerActions className="mt-4">
           <Button variant="primary" contrast appearance="button">
             Watch Now
           </Button>
@@ -182,11 +182,11 @@ export const LightOverlay: Story = {
       <BannerContent textColor="dark">
         <BannerTitle>Nature Retreats</BannerTitle>
         <BannerSubtitle>Find your peace</BannerSubtitle>
-        <BannerBody>
+        <BannerBody className="mt-3">
           Disconnect from the everyday and reconnect with yourself in our
           carefully curated natural escapes.
         </BannerBody>
-        <BannerActions>
+        <BannerActions className="mt-4">
           <Button variant="primary" appearance="button">
             Explore
           </Button>
@@ -207,10 +207,10 @@ export const RightAligned: Story = {
       <BannerContent textColor="light" maxWidth="50rem">
         <BannerTitle level="h2">Premium Collection</BannerTitle>
         <BannerSubtitle>Exclusive designs for you</BannerSubtitle>
-        <BannerBody>
+        <BannerBody className="mt-3">
           Handcrafted with attention to every detail.
         </BannerBody>
-        <BannerActions>
+        <BannerActions className="mt-4">
           <Button variant="secondary" contrast appearance="button">
             Shop Now
           </Button>
@@ -233,7 +233,7 @@ export const BottomContent: Story = {
       <BannerContent textColor="light">
         <BannerTitle level="h2">Summer Collection 2025</BannerTitle>
         <BannerSubtitle>Now Available</BannerSubtitle>
-        <BannerActions>
+        <BannerActions className="mt-4">
           <Button variant="primary" contrast appearance="button">
             View Collection
           </Button>
@@ -254,7 +254,7 @@ export const AllVariantsContrast: Story = {
         <BannerSubtitle>
           All variants with contrast prop on dark background
         </BannerSubtitle>
-        <BannerActions>
+        <BannerActions className="mt-4">
           <Button variant="default" contrast appearance="button">
             Default
           </Button>

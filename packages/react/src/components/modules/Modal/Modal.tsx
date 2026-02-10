@@ -38,7 +38,11 @@ export function Modal({
   // Initial setup
   useEffect(() => {
     previousFocusRef.current = document.activeElement as HTMLElement
-    modalRef.current?.querySelector('button')?.focus()
+    modalRef.current
+      ?.querySelector<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      )
+      ?.focus()
     const timer = setTimeout(() => setActive(true), 100)
     return () => clearTimeout(timer)
   }, [])

@@ -1,22 +1,22 @@
-# GDPR
+# Gdpr
 
 Cookie consent modal with localStorage persistence, customizable categories, and Global Privacy Control support. Uses Modal, Accordion, Switch, Button, Badge, and Link components.
 
 ## Import
 
 ```tsx
-import { GDPRProvider, useGDPR } from '@ui'
+import { GdprProvider, useGdpr } from '@ui'
 ```
 
 ## Setup
 
-Wrap your app with `GDPRProvider` inside `Modals`:
+Wrap your app with `GdprProvider` inside `Modals`:
 
 ```tsx
 <Modals>
-  <GDPRProvider>
+  <GdprProvider>
     <App />
-  </GDPRProvider>
+  </GdprProvider>
 </Modals>
 ```
 
@@ -25,18 +25,18 @@ Wrap your app with `GDPRProvider` inside `Modals`:
 ### Basic
 
 ```tsx
-<GDPRProvider
+<GdprProvider
   privacyPolicyUrl="/privacy"
   termsUrl="/terms"
 >
   <App />
-</GDPRProvider>
+</GdprProvider>
 ```
 
 ### Custom Categories
 
 ```tsx
-<GDPRProvider
+<GdprProvider
   categories={[
     {
       id: 'necessary',
@@ -52,13 +52,13 @@ Wrap your app with `GDPRProvider` inside `Modals`:
   ]}
 >
   <App />
-</GDPRProvider>
+</GdprProvider>
 ```
 
 ### Custom Strings
 
 ```tsx
-<GDPRProvider
+<GdprProvider
   strings={{
     title: 'Privacy Preferences',
     acceptAll: 'Accept All Cookies',
@@ -66,13 +66,13 @@ Wrap your app with `GDPRProvider` inside `Modals`:
   }}
 >
   <App />
-</GDPRProvider>
+</GdprProvider>
 ```
 
 ### Reading Consent
 
 ```tsx
-const { consent, hasConsented, hasCategory } = useGDPR()
+const { consent, hasConsented, hasCategory } = useGdpr()
 
 if (hasCategory('targeting')) {
   // Load analytics
@@ -82,34 +82,34 @@ if (hasCategory('targeting')) {
 ### Opening Settings Programmatically
 
 ```tsx
-const { openSettings } = useGDPR()
+const { openSettings } = useGdpr()
 
 <Button onClick={openSettings}>Cookie Settings</Button>
 ```
 
-## Props (GDPRProviderTypes)
+## Props (GdprProviderTypes)
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `categories` | `GDPRCategory[]` | 4 defaults | Cookie categories to display |
-| `strings` | `Partial<GDPRStrings>` | English defaults | UI string overrides |
-| `storageKey` | `string` | `'pushui-gdpr'` | localStorage key for consent |
+| `categories` | `GdprCategory[]` | 4 defaults | Cookie categories to display |
+| `strings` | `Partial<GdprStrings>` | English defaults | UI string overrides |
+| `storageKey` | `string` | `'GDPR'` | localStorage key for consent |
 | `autoOpen` | `boolean` | `true` | Open modal on first visit |
 | `respectGPC` | `boolean` | `true` | Honor Global Privacy Control signal |
-| `modalWidth` | `string` | `'650px'` | Modal width |
+| `modalWidth` | `string` | `'65rem'` | Modal width |
 | `privacyPolicyUrl` | `string` | - | Privacy policy link URL |
 | `termsUrl` | `string` | - | Terms of use link URL |
 | `onConsentChange` | `(consent) => void` | - | Callback when consent changes |
 
 ## Hook API
 
-### useGDPR()
+### useGdpr()
 
 Returns:
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `consent` | `GDPRConsent` | Current consent state per category |
+| `consent` | `GdprConsent` | Current consent state per category |
 | `hasConsented` | `boolean` | Whether user has made a choice |
 | `isGPCEnabled` | `boolean` | Whether GPC signal is detected |
 | `openSettings` | `() => void` | Open the consent modal |
@@ -117,7 +117,7 @@ Returns:
 
 ## Types
 
-### GDPRCategory
+### GdprCategory
 
 | Property | Type | Description |
 |----------|------|-------------|
@@ -126,15 +126,17 @@ Returns:
 | `description` | `string` | Expanded description text |
 | `required` | `boolean` | Cannot be disabled (shows "Always Active") |
 
-### GDPRStrings
+### GdprStrings
 
 | Property | Default |
 |----------|---------|
 | `title` | "Cookie Settings" |
 | `description` | "We use cookies to operate this site..." |
+| `preferencesDescription` | "Manage your cookie preferences below..." |
 | `acceptAll` | "Accept All" |
 | `necessaryOnly` | "Necessary Only" |
 | `confirmSelections` | "Confirm Selections" |
+| `moreChoices` | "More Choices" |
 | `alwaysActive` | "Always Active" |
 | `footerText` | "By confirming, you accept our..." |
 | `gpcNotice` | "Global Privacy Control signal detected..." |
@@ -163,12 +165,12 @@ Returns:
 ```tsx
 const gdprData = await strapi.find('gdpr-settings')
 
-<GDPRProvider
+<GdprProvider
   categories={gdprData.categories}
   strings={gdprData.strings}
   privacyPolicyUrl={gdprData.privacyPolicyUrl}
   termsUrl={gdprData.termsUrl}
 >
   <App />
-</GDPRProvider>
+</GdprProvider>
 ```

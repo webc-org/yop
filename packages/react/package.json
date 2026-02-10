@@ -1,6 +1,6 @@
 {
   "name": "@pushui/react",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Push UI React component library",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

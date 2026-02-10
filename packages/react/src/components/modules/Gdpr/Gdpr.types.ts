@@ -1,17 +1,17 @@
 import type { ReactNode } from 'react'
 
-export type GDPRCategoryId = string
+export type GdprCategoryId = string
 
-export type GDPRCategory = {
-  id: GDPRCategoryId
+export type GdprCategory = {
+  id: GdprCategoryId
   label: string
   description: string
   required?: boolean
 }
 
-export type GDPRConsent = Record<GDPRCategoryId, boolean>
+export type GdprConsent = Record<GdprCategoryId, boolean>
 
-export type GDPRStrings = {
+export type GdprStrings = {
   title: string
   description: string
   acceptAll: string
@@ -23,25 +23,27 @@ export type GDPRStrings = {
   privacyPolicyLabel: string
   termsLabel: string
   toggleLabel: string
+  moreChoices: string
+  preferencesDescription: string
 }
 
-export type GDPRProviderTypes = {
+export type GdprProviderTypes = {
   children: ReactNode
-  categories?: GDPRCategory[]
-  strings?: Partial<GDPRStrings>
+  categories?: GdprCategory[]
+  strings?: Partial<GdprStrings>
   storageKey?: string
   autoOpen?: boolean
   respectGPC?: boolean
   modalWidth?: string
   privacyPolicyUrl?: string
   termsUrl?: string
-  onConsentChange?: (consent: GDPRConsent) => void
+  onConsentChange?: (consent: GdprConsent) => void
 }
 
-export type GDPRContextValue = {
-  consent: GDPRConsent
+export type GdprContextValue = {
+  consent: GdprConsent
   hasConsented: boolean
   isGPCEnabled: boolean
   openSettings: () => void
-  hasCategory: (id: GDPRCategoryId) => boolean
+  hasCategory: (id: GdprCategoryId) => boolean
 }

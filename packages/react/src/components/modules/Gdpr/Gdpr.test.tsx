@@ -2,8 +2,8 @@ import { useEffect } from 'react'
 import '@testing-library/jest-dom/vitest'
 import { act, fireEvent, render, screen } from 'utils/Test'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { Modals } from '../Modal/Modals'
-import { GDPRProvider, useGDPR } from './GDPRContext'
+import { Modals } from '../Modal'
+import { GdprProvider, useGdpr } from './GdprContext'
 
 const localStorageMock = (() => {
   let store: Record<string, string> = {}
@@ -28,7 +28,7 @@ function TestConsumer({
 }: {
   onConsent?: (c: unknown) => void
 }) {
-  const { consent, hasConsented, openSettings } = useGDPR()
+  const { consent, hasConsented, openSettings } = useGdpr()
 
   useEffect(() => {
     onConsent?.({ consent, hasConsented })
@@ -61,9 +61,9 @@ describe('GDPR', () => {
   it('renders children without crashing', () => {
     render(
       <Modals>
-        <GDPRProvider autoOpen={false}>
+        <GdprProvider autoOpen={false}>
           <div data-testid="child">Hello</div>
-        </GDPRProvider>
+        </GdprProvider>
       </Modals>
     )
     expect(screen.getByTestId('child')).toBeInTheDocument()
@@ -72,9 +72,9 @@ describe('GDPR', () => {
   it('auto-opens modal on first visit', async () => {
     render(
       <Modals>
-        <GDPRProvider autoOpen={true}>
+        <GdprProvider>
           <TestConsumer />
-        </GDPRProvider>
+        </GdprProvider>
       </Modals>
     )
     await act(async () => vi.advanceTimersByTime(150))
@@ -87,9 +87,9 @@ describe('GDPR', () => {
   it('does not auto-open when autoOpen is false', async () => {
     render(
       <Modals>
-        <GDPRProvider autoOpen={false}>
+        <GdprProvider autoOpen={false}>
           <TestConsumer />
-        </GDPRProvider>
+        </GdprProvider>
       </Modals>
     )
     await act(async () => vi.advanceTimersByTime(150))
@@ -102,9 +102,9 @@ describe('GDPR', () => {
   it('opens modal via openSettings', async () => {
     render(
       <Modals>
-        <GDPRProvider autoOpen={false}>
+        <GdprProvider autoOpen={false}>
           <TestConsumer />
-        </GDPRProvider>
+        </GdprProvider>
       </Modals>
     )
 
@@ -116,15 +116,54 @@ describe('GDPR', () => {
     expect(modal).toHaveTextContent('Cookie Settings')
   })
 
-  it('renders all default categories', async () => {
+  it('shows banner view by default with Accept All, Necessary Only, and More Choices', async () => {
     render(
       <Modals>
-        <GDPRProvider autoOpen={true}>
+        <GdprProvider>
           <TestConsumer />
-        </GDPRProvider>
+        </GdprProvider>
       </Modals>
     )
     await act(async () => vi.advanceTimersByTime(150))
+
+    expect(screen.getByText('Accept All')).toBeInTheDocument()
+    expect(screen.getByText('Necessary Only')).toBeInTheDocument()
+    expect(screen.getByText('More Choices')).toBeInTheDocument()
+    expect(
+      screen.queryByText('Confirm Selections')
+    ).not.toBeInTheDocument()
+  })
+
+  it('does not show categories in banner view', async () => {
+    render(
+      <Modals>
+        <GdprProvider>
+          <TestConsumer />
+        </GdprProvider>
+      </Modals>
+    )
+    await act(async () => vi.advanceTimersByTime(150))
+
+    expect(screen.queryByText('Targeting Cookies')).not.toBeInTheDocument()
+    expect(
+      screen.queryByText('Functional Cookies')
+    ).not.toBeInTheDocument()
+    expect(
+      screen.queryByText('Performance Cookies')
+    ).not.toBeInTheDocument()
+  })
+
+  it('clicking More Choices shows preferences view with categories', async () => {
+    render(
+      <Modals>
+        <GdprProvider>
+          <TestConsumer />
+        </GdprProvider>
+      </Modals>
+    )
+    await act(async () => vi.advanceTimersByTime(150))
+
+    fireEvent.click(screen.getByText('More Choices'))
 
     expect(screen.getByText('Necessary Cookies')).toBeInTheDocument()
     expect(screen.getByText('Targeting Cookies')).toBeInTheDocument()
@@ -132,27 +171,47 @@ describe('GDPR', () => {
     expect(screen.getByText('Performance Cookies')).toBeInTheDocument()
   })
 
-  it('shows Always Active badge for required categories', async () => {
+  it('preferences view shows Confirm Selections instead of More Choices', async () => {
     render(
       <Modals>
-        <GDPRProvider autoOpen={true}>
+        <GdprProvider>
           <TestConsumer />
-        </GDPRProvider>
+        </GdprProvider>
       </Modals>
     )
     await act(async () => vi.advanceTimersByTime(150))
 
+    fireEvent.click(screen.getByText('More Choices'))
+
+    expect(screen.getByText('Accept All')).toBeInTheDocument()
+    expect(screen.getByText('Necessary Only')).toBeInTheDocument()
+    expect(screen.getByText('Confirm Selections')).toBeInTheDocument()
+    expect(screen.queryByText('More Choices')).not.toBeInTheDocument()
+  })
+
+  it('shows Always Active badge for required categories in preferences', async () => {
+    render(
+      <Modals>
+        <GdprProvider>
+          <TestConsumer />
+        </GdprProvider>
+      </Modals>
+    )
+    await act(async () => vi.advanceTimersByTime(150))
+
+    fireEvent.click(screen.getByText('More Choices'))
+
     expect(screen.getByText('Always Active')).toBeInTheDocument()
   })
 
-  it('saves consent to localStorage on Accept All', async () => {
+  it('saves consent to localStorage on Accept All from banner', async () => {
     const onConsentChange = vi.fn()
 
     render(
       <Modals>
-        <GDPRProvider autoOpen={true} onConsentChange={onConsentChange}>
+        <GdprProvider onConsentChange={onConsentChange}>
           <TestConsumer />
-        </GDPRProvider>
+        </GdprProvider>
       </Modals>
     )
     await act(async () => vi.advanceTimersByTime(150))
@@ -160,7 +219,7 @@ describe('GDPR', () => {
     fireEvent.click(screen.getByText('Accept All'))
 
     expect(localStorageMock.setItem).toHaveBeenCalledWith(
-      'pushui-gdpr',
+      'GDPR',
       expect.any(String)
     )
 
@@ -172,12 +231,12 @@ describe('GDPR', () => {
     expect(onConsentChange).toHaveBeenCalled()
   })
 
-  it('saves necessary-only consent', async () => {
+  it('saves necessary-only consent from banner', async () => {
     render(
       <Modals>
-        <GDPRProvider autoOpen={true}>
+        <GdprProvider>
           <TestConsumer />
-        </GDPRProvider>
+        </GdprProvider>
       </Modals>
     )
     await act(async () => vi.advanceTimersByTime(150))
@@ -191,31 +250,12 @@ describe('GDPR', () => {
     expect(stored.performance).toBe(false)
   })
 
-  it('renders action buttons', async () => {
-    render(
-      <Modals>
-        <GDPRProvider autoOpen={true}>
-          <TestConsumer />
-        </GDPRProvider>
-      </Modals>
-    )
-    await act(async () => vi.advanceTimersByTime(150))
-
-    expect(screen.getByText('Accept All')).toBeInTheDocument()
-    expect(screen.getByText('Necessary Only')).toBeInTheDocument()
-    expect(screen.getByText('Confirm Selections')).toBeInTheDocument()
-  })
-
   it('renders footer links when URLs provided', async () => {
     render(
       <Modals>
-        <GDPRProvider
-          autoOpen={true}
-          privacyPolicyUrl="/privacy"
-          termsUrl="/terms"
-        >
+        <GdprProvider privacyPolicyUrl="/privacy" termsUrl="/terms">
           <TestConsumer />
-        </GDPRProvider>
+        </GdprProvider>
       </Modals>
     )
     await act(async () => vi.advanceTimersByTime(150))

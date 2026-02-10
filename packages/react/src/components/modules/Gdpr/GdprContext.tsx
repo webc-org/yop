@@ -7,60 +7,19 @@ import {
   useRef,
   useState,
 } from 'react'
-import { useModals } from '../Modal/ModalsContext'
-import { GDPRModal } from './GDPR'
+import { useModals } from '../Modal'
+import { GdprModal } from './Gdpr'
+import { DEFAULT_CATEGORIES, DEFAULT_STRINGS } from './Gdpr.defaults'
 import type {
-  GDPRCategory,
-  GDPRConsent,
-  GDPRContextValue,
-  GDPRProviderTypes,
-  GDPRStrings,
-} from './GDPR.types'
+  GdprCategory,
+  GdprConsent,
+  GdprContextValue,
+  GdprProviderTypes,
+} from './Gdpr.types'
 
-const GDPRContext = createContext<GDPRContextValue | undefined>(undefined)
+const GdprContext = createContext<GdprContextValue | undefined>(undefined)
 
-const DEFAULT_CATEGORIES: GDPRCategory[] = [
-  {
-    id: 'necessary',
-    label: 'Necessary Cookies',
-    description: 'Required for the site to function. Cannot be disabled.',
-    required: true,
-  },
-  {
-    id: 'targeting',
-    label: 'Targeting Cookies',
-    description: 'Used for relevant ads and social media features.',
-  },
-  {
-    id: 'functional',
-    label: 'Functional Cookies',
-    description: 'Enable enhanced functionality and personalization.',
-  },
-  {
-    id: 'performance',
-    label: 'Performance Cookies',
-    description: 'Help measure and improve site performance.',
-  },
-]
-
-const DEFAULT_STRINGS: GDPRStrings = {
-  title: 'Cookie Settings',
-  description:
-    'We use cookies to operate this site. Additional cookies are set only with your consent.',
-  acceptAll: 'Accept All',
-  necessaryOnly: 'Necessary Only',
-  confirmSelections: 'Confirm Selections',
-  alwaysActive: 'Always Active',
-  footerText:
-    'By confirming, you accept our Privacy Notice and Terms of Use.',
-  gpcNotice:
-    'Global Privacy Control signal detected. Non-essential cookies are disabled by default.',
-  privacyPolicyLabel: 'Privacy Policy',
-  termsLabel: 'Terms of Use',
-  toggleLabel: 'Toggle {label}',
-}
-
-function getStoredConsent(key: string): GDPRConsent | null {
+function getStoredConsent(key: string): GdprConsent | null {
   try {
     const raw = localStorage.getItem(key)
     return raw ? JSON.parse(raw) : null
@@ -69,7 +28,7 @@ function getStoredConsent(key: string): GDPRConsent | null {
   }
 }
 
-function storeConsent(key: string, consent: GDPRConsent) {
+function storeConsent(key: string, consent: GdprConsent) {
   try {
     localStorage.setItem(key, JSON.stringify(consent))
   } catch {
@@ -84,43 +43,49 @@ function detectGPC(): boolean {
 }
 
 export function buildConsent(
-  categories: GDPRCategory[],
+  categories: GdprCategory[],
   allEnabled: boolean
-): GDPRConsent {
-  const consent: GDPRConsent = {}
+): GdprConsent {
+  const consent: GdprConsent = {}
   for (const cat of categories) {
     consent[cat.id] = cat.required ? true : allEnabled
   }
   return consent
 }
 
-export function GDPRProvider({
+export function GdprProvider({
   children,
   categories = DEFAULT_CATEGORIES,
   strings: stringOverrides,
-  storageKey = 'pushui-gdpr',
+  storageKey = 'GDPR',
   autoOpen = true,
   respectGPC = true,
-  modalWidth = '650px',
+  modalWidth = '65rem',
   privacyPolicyUrl,
   termsUrl,
   onConsentChange,
-}: GDPRProviderTypes) {
+}: GdprProviderTypes) {
   const { addModal, removeModal } = useModals()
+
   const modalIdRef = useRef<number | null>(null)
+
   const isGPCEnabled = useMemo(
     () => respectGPC && detectGPC(),
     [respectGPC]
   )
+
   const strings = useMemo(
     () => ({ ...DEFAULT_STRINGS, ...stringOverrides }),
     [stringOverrides]
   )
 
-  const [consent, setConsent] = useState<GDPRConsent>(() => {
+  const [consent, setConsent] = useState<GdprConsent>(() => {
     const stored = getStoredConsent(storageKey)
+
     if (stored) return stored
+
     if (isGPCEnabled) return buildConsent(categories, false)
+
     return buildConsent(categories, false)
   })
 
@@ -129,7 +94,7 @@ export function GDPRProvider({
   )
 
   const saveConsent = useCallback(
-    (newConsent: GDPRConsent) => {
+    (newConsent: GdprConsent) => {
       setConsent(newConsent)
       setHasConsented(true)
       storeConsent(storageKey, newConsent)
@@ -151,7 +116,7 @@ export function GDPRProvider({
       width: modalWidth,
       hideCloseButton: true,
       children: (
-        <GDPRModal
+        <GdprModal
           categories={categories}
           strings={strings}
           consent={consent}
@@ -178,11 +143,11 @@ export function GDPRProvider({
     if (autoOpen && !hasConsented) {
       openSettings()
     }
-  }, [])
+  }, [autoOpen, hasConsented, openSettings])
 
   const hasCategory = useCallback((id: string) => !!consent[id], [consent])
 
-  const value = useMemo<GDPRContextValue>(
+  const value = useMemo<GdprContextValue>(
     () => ({
       consent,
       hasConsented,
@@ -194,15 +159,15 @@ export function GDPRProvider({
   )
 
   return (
-    <GDPRContext.Provider value={value}>{children}</GDPRContext.Provider>
+    <GdprContext.Provider value={value}>{children}</GdprContext.Provider>
   )
 }
 
-export function useGDPR() {
-  const context = useContext(GDPRContext)
+export function useGdpr() {
+  const context = useContext(GdprContext)
 
   if (!context) {
-    throw new Error('useGDPR must be used within a GDPRProvider')
+    throw new Error('useGdpr must be used within a GdprProvider')
   }
 
   return context

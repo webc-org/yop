@@ -15,9 +15,9 @@ $bg-color-accordion-inner-expanded: var(--color-grey-5);
 }
 
 .item {
+  border-bottom: 0.1rem solid $bd-color-accordion;
   display: flex;
   flex-direction: column;
-  border-bottom: 0.1rem solid $bd-color-accordion;
 
   &:last-child {
     border: 0;
@@ -35,12 +35,13 @@ $bg-color-accordion-inner-expanded: var(--color-grey-5);
   color: $tx-color-trigger;
   cursor: pointer;
   display: flex;
+  font-weight: var(--font-weight-strong);
   justify-content: space-between;
   padding: 1.5rem 2rem;
   text-align: left;
+  text-decoration: none;
   transition: background-color 0.15s ease;
   width: 100%;
-  text-decoration: none;
 
   &.expanded,
   &:hover,
