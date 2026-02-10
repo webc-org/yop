@@ -30,11 +30,16 @@ $heading-sizes: (
   font-size: var(--font-size-4);
   outline: none;
   text-decoration: underline;
+  cursor: pointer;
 
   &:hover,
   &:focus-visible {
     color: $tx-color-base-link-active;
     text-decoration: none;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 }
 
@@ -162,4 +167,3 @@ $heading-sizes: (
     }
   }
 }
-

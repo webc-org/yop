@@ -78,6 +78,23 @@ describe('Switch', () => {
     expect(handleChange).not.toHaveBeenCalled()
   })
 
+  it('toggles on Enter key', async () => {
+    const user = userEvent.setup()
+    const handleChange = vi.fn()
+    render(<Switch label="Test" onChange={handleChange} />)
+
+    const switchEl = screen.getByRole('switch')
+    switchEl.focus()
+
+    await user.keyboard('{Enter}')
+    expect(handleChange).toHaveBeenCalledWith(true)
+    expect(switchEl).toBeChecked()
+
+    await user.keyboard('{Enter}')
+    expect(handleChange).toHaveBeenCalledWith(false)
+    expect(switchEl).not.toBeChecked()
+  })
+
   it('forwards ref to input', () => {
     const ref = { current: null }
     render(<Switch label="Test" ref={ref} />)

@@ -44,6 +44,12 @@ export function Switch({
         type="checkbox"
         checked={isChecked}
         onChange={(e) => handleChange(e.target.checked)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault()
+            handleChange(!isChecked)
+          }
+        }}
         disabled={disabled}
         aria-checked={isChecked}
         className={styles.hiddenInput}

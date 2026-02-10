@@ -1,0 +1,84 @@
+@use './styles/mixins/mq' as *;
+
+$tx-color-gpc: var(--color-warning-2);
+$bg-color-gpc: var(--color-warning-6);
+
+.gdpr {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.description {
+  margin: 0;
+}
+
+.gpcNotice {
+  background: $bg-color-gpc;
+  border-radius: var(--radius-2);
+  color: $tx-color-gpc;
+  font-size: var(--font-size-2);
+  margin: 0;
+  padding: 1rem 1.5rem;
+}
+
+.categories {
+  width: 100%;
+}
+
+.categoryRow {
+  flex: 1;
+  position: relative;
+}
+
+.categoryTrigger {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+}
+
+.categoryControl {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  height: 100%;
+  margin-right: 2rem;
+  position: absolute;
+  right: 3rem;
+  top: 0;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  @include mq-md {
+    flex-direction: row;
+  }
+}
+
+.badge {
+  display: none;
+
+  @include mq-md {
+    display: flex;
+  }
+}
+
+.button {
+  @include mq-md {
+    display: flex;
+    flex: 1;
+  }
+}
+
+.footer {
+  background-color: var(--color-grey-7);
+  border-radius: 0 0 var(--radius-2) var(--radius-2);
+  display: block;
+  font-size: var(--font-size-2);
+  margin: 0 -2rem -2rem;
+  padding: 2rem;
+  text-align: center;
+}

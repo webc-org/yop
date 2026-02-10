@@ -16,7 +16,7 @@ pushui/
 │           ├── components/
 │           │   ├── base/    # Atomic UI elements (21)
 │           │   ├── form/    # Form inputs and controls (13)
-│           │   ├── modules/ # Content wrappers (8)
+│           │   ├── modules/ # Content wrappers (9)
 │           │   └── sections/# Page-level layouts (6)
 │           ├── types/       # Shared TypeScript types
 │           └── index.ts     # Library entry point

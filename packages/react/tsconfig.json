@@ -3,13 +3,40 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "components": ["./src/components"],
-      "components/*": ["./src/components/*"],
-      "utils": ["./src/utils"],
-      "utils/*": ["./src/utils/*"],
-      "styles/*": ["../styles/src/*"]
+      "components": [
+        "./src/components"
+      ],
+      "components/*": [
+        "./src/components/*"
+      ],
+      "base": [
+        "./src/components/base"
+      ],
+      "base/*": [
+        "./src/components/base/*"
+      ],
+      "form": [
+        "./src/components/form"
+      ],
+      "form/*": [
+        "./src/components/form/*"
+      ],
+      "utils": [
+        "./src/utils"
+      ],
+      "utils/*": [
+        "./src/utils/*"
+      ],
+      "styles/*": [
+        "../styles/src/*"
+      ],
     }
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }

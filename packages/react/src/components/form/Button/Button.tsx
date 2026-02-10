@@ -19,7 +19,6 @@ export function Button({
   const isStyled = variant || appearance
 
   const classList = clsx(
-    styles.button,
     isStyled && styles.styled,
     variant && styles[`variant-${variant}`],
     appearance && styles[`appearance-${appearance}`],

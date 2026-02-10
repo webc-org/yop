@@ -20,7 +20,6 @@ export function Link({
   const isStyled = variant || appearance
 
   const classList = clsx(
-    styles.link,
     isStyled && styles.styled,
     variant && styles[`variant-${variant}`],
     appearance && styles[`appearance-${appearance}`],

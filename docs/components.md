@@ -6,7 +6,7 @@
 |----------------|-------|------------|
 | **base/**      | 21    | Audio, Avatar, Badge, Breadcrumb, Divider, Iframe, Image, Layout, Link, Logo, Note, Pagination, Progress, RichText, Section, Skeleton, Spinner, Title, Toast, Tooltip, Video |
 | **form/**      | 13    | Button, Checkbox, Date, File, Number, Password, Radio, Search, Select, Slider, Switch, Text, Textarea |
-| **modules/**   | 8     | Accordion, Banner, Card, Carousel, Grid, Modal, Tab, Table |
+| **modules/**   | 9     | Accordion, Banner, Card, Carousel, GDPR, Grid, Modal, Tab, Table |
 | **sections/**  | 6     | Account, Auth, Dashboard, Footer, Header, Page |
 
 ## Base Components
@@ -61,6 +61,7 @@
 | Banner | Hero with background |
 | Card | Content container |
 | Carousel | Image/content slider |
+| GDPR | Cookie consent with localStorage and GPC |
 | Grid | Responsive grid layout |
 | Modal | Dialog overlay |
 | Tab | Tabbed interface |

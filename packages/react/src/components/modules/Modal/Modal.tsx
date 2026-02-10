@@ -1,6 +1,6 @@
 import { useEffect, useEffectEvent, useRef, useState } from 'react'
 import clsx from 'clsx'
-import { Button } from 'components'
+import { Button, Title } from 'components'
 import { X } from 'lucide-react'
 import styles from './Modal.module.scss'
 import type { ModalTypes } from './Modal.types'
@@ -144,7 +144,7 @@ export function Modal({
       >
         {title && (
           <div className={styles.modalHeader} id={modalTitleId}>
-            {title}
+            <Title level="h4">{title}</Title>
           </div>
         )}
 

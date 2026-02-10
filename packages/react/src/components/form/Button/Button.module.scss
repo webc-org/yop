@@ -1,13 +1,5 @@
 @use 'styles/mixins/action' as *;
 
-.button {
-  cursor: pointer;
-
-  &:disabled {
-    cursor: not-allowed;
-  }
-}
-
 .styled {
   @include action-base;
   @include action-appearances;
