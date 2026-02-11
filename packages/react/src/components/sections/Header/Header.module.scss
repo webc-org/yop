@@ -1,27 +1,27 @@
 @use 'styles/mixins/mq' as *;
 
 $bg-color-header: var(--color-white);
-$bg-color-topbar: var(--color-grey-7);
-$bg-color-dropdown: var(--color-white);
-$bg-color-link-active: var(--color-grey-6);
-$bg-color-overlay: var(--color-black-50);
+$tx-color-link: var(--color-black);
+$tx-color-link-active: var(--color-primary-2);
+$tx-color-link-active-contrast: var(--color-primary-contrast);
+$bg-color-mobile-overlay: var(--color-black-50);
 $bg-color-mobile-link: var(--color-grey-6);
 $bg-color-mobile-link-active: var(--color-primary-2);
 $bg-color-mobile-dropdown: var(--color-grey-5);
-$bd-color-topbar: var(--color-grey-6);
-$bd-color-dropdown: var(--color-grey-6);
 $bd-color-mobile-separator: var(--color-grey-5);
-$tx-color-link: var(--color-black);
-$tx-color-link-active: var(--color-primary-2);
 $tx-color-mobile-link-active: var(--color-white);
-$bg-color-transparent-topbar-light: var(--color-white-20);
-$bg-color-transparent-main-light: var(--color-white-10);
-$bg-color-transparent-topbar-dark: var(--color-black-10);
-$bg-color-transparent-main-dark: var(--color-black-05);
-$bg-color-transparent-hover-light: var(--color-white-10);
-$bg-color-transparent-hover-dark: var(--color-black-10);
+$bg-color-transparent-light-active: var(--color-white-10);
+$bg-color-transparent-dark-active: var(--color-black-10);
 $tx-color-transparent-light: var(--color-white);
 $tx-color-transparent-dark: var(--color-black);
+$bg-color-topbar: var(--color-grey-7);
+$bg-color-topbar-transparent-light: var(--color-white-20);
+$bg-color-topbar-transparent-dark: var(--color-black-10);
+$bd-color-topbar: var(--color-grey-6);
+$bg-color-mainbar-transparent-light: var(--color-white-10);
+$bg-color-mainbar-transparent-dark: var(--color-black-05);
+$bg-color-mainbar-dropdown: var(--color-white);
+$bg-color-mainbar-link-active: var(--color-grey-6);
 
 .header {
   left: 0;
@@ -31,32 +31,35 @@ $tx-color-transparent-dark: var(--color-black);
   z-index: var(--z-index-3);
 }
 
-.overlay {
-  background-color: $bg-color-overlay;
-  inset: 0;
-  opacity: 0;
-  pointer-events: none;
-  position: fixed;
-  transition: opacity var(--transition-default);
-  z-index: var(--z-index-3);
-
-  @include mq-md {
-    display: none;
-  }
-
-  &.isOpen {
-    opacity: 1;
-    pointer-events: auto;
-  }
+.chevron {
+  transition: transform var(--transition-default);
 }
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+// TOP BAR
 
 .topBar {
   background-color: $bg-color-topbar;
-  border-bottom: .1rem solid $bd-color-topbar;
   display: none;
+  transition: background-color var(--transition-default);
 
   @include mq-md {
     display: block;
+  }
+
+  .transparent:not(.scrolled) & {
+    background-color: transparent;
+  }
+
+  .transparent.overlayTop-light:not(.scrolled) & {
+    background-color: $bg-color-topbar-transparent-light;
+  }
+
+  .transparent.overlayTop-dark:not(.scrolled) & {
+    background-color: $bg-color-topbar-transparent-dark;
   }
 }
 
@@ -97,11 +100,11 @@ $tx-color-transparent-dark: var(--color-black);
   }
 }
 
-.withTopDropdown {
+.topDropdownWrapper {
   position: relative;
 }
 
-.topTrigger {
+.topDropdownTrigger {
   align-items: center;
   color: $tx-color-link;
   cursor: pointer;
@@ -109,27 +112,13 @@ $tx-color-transparent-dark: var(--color-black);
   font-size: var(--font-size-3);
   gap: 0.5rem;
   height: var(--height-top-menu);
-  padding: 0 1rem;
   position: relative;
   text-decoration: none;
 
-  &:hover,
-  &:focus-visible,
-  .withTopDropdown:hover &,
-  .withTopDropdown:focus-within & {
+  .topDropdownWrapper:hover &,
+  .topDropdownWrapper:focus-within & {
     background-color: transparent;
     color: $tx-color-link-active;
-
-    &::after {
-      background: $bg-color-dropdown;
-      content: '';
-      height: .1rem;
-      left: 0;
-      position: absolute;
-      top: 100%;
-      width: 100%;
-      z-index: var(--z-index-6);
-    }
   }
 }
 
@@ -194,15 +183,30 @@ $tx-color-transparent-dark: var(--color-black);
   }
 }
 
-.main {
+// MAIN BAR
+
+.mainBar {
   background-color: $bg-color-header;
   display: none;
   min-height: var(--height-main-menu);
   position: relative;
+  transition: background-color var(--transition-default);
   z-index: var(--z-index-4);
 
   @include mq-md {
     display: block;
+  }
+
+  .transparent:not(.scrolled) & {
+    background-color: transparent;
+  }
+
+  .transparent.overlayMain-light:not(.scrolled) & {
+    background-color: $bg-color-mainbar-transparent-light;
+  }
+
+  .transparent.overlayMain-dark:not(.scrolled) & {
+    background-color: $bg-color-mainbar-transparent-dark;
   }
 }
 
@@ -234,7 +238,7 @@ $tx-color-transparent-dark: var(--color-black);
   img,
   svg {
     height: auto;
-    max-height: 4rem;
+    max-height: 3rem;
     width: auto;
   }
 
@@ -254,7 +258,7 @@ $tx-color-transparent-dark: var(--color-black);
 
   &:hover,
   &:focus-visible {
-    background-color: $bg-color-link-active;
+    background-color: $bg-color-mainbar-link-active;
     color: $tx-color-link-active;
     text-decoration: none;
   }
@@ -264,9 +268,39 @@ $tx-color-transparent-dark: var(--color-black);
     color: $tx-color-link-active;
     cursor: default;
   }
+
+  &.icon {
+    font-size: var(--font-size-6);
+
+    &:hover,
+    &:focus-visible {
+      background-color: transparent;
+      color: $tx-color-link-active;
+    }
+
+    .transparent.textLight:not(.scrolled) & {
+      color: $tx-color-transparent-light;
+
+      &:hover,
+      &:focus-visible {
+        background-color: transparent;
+        color: $tx-color-link-active-contrast;
+      }
+    }
+
+    .transparent.textDark:not(.scrolled) & {
+      color: $tx-color-transparent-dark;
+
+      &:hover,
+      &:focus-visible {
+        background-color: transparent;
+        color: $tx-color-link-active-contrast;
+      }
+    }
+  }
 }
 
-.withMainDropdown {
+.mainDropdownWrapper {
   align-items: center;
   display: flex;
   height: var(--height-main-menu);
@@ -300,11 +334,9 @@ $tx-color-transparent-dark: var(--color-black);
   padding: 0 2rem;
   text-decoration: none;
 
-  &:hover,
-  &:focus-visible,
-  .withMainDropdown:hover &,
-  .withMainDropdown:focus-within & {
-    background-color: $bg-color-link-active;
+  .mainDropdownWrapper:hover &,
+  .mainDropdownWrapper:focus-within & {
+    background-color: $bg-color-mainbar-link-active;
     color: $tx-color-link-active;
   }
 }
@@ -343,7 +375,7 @@ $tx-color-transparent-dark: var(--color-black);
 }
 
 .mainDropdownInner {
-  background: $bg-color-dropdown;
+  background: $bg-color-mainbar-dropdown;
   border-radius: var(--radius-2);
   color: $tx-color-link;
   padding: 2rem;
@@ -374,7 +406,7 @@ $tx-color-transparent-dark: var(--color-black);
 }
 
 .megaMenuInner {
-  background: $bg-color-dropdown;
+  background: $bg-color-mainbar-dropdown;
   border-radius: var(--radius-2);
   color: $tx-color-link;
   margin: 0 auto;
@@ -417,11 +449,33 @@ $tx-color-transparent-dark: var(--color-black);
   }
 }
 
+// MOBILE
+
 .mobile {
+  display: block;
   position: relative;
 
   @include mq-md {
     display: none;
+  }
+}
+
+.mobileOverlay {
+  background-color: $bg-color-mobile-overlay;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  transition: opacity var(--transition-default);
+  z-index: var(--z-index-3);
+
+  @include mq-md {
+    display: none;
+  }
+
+  &.isOpen {
+    opacity: 1;
+    pointer-events: auto;
   }
 }
 
@@ -432,6 +486,11 @@ $tx-color-transparent-dark: var(--color-black);
   height: var(--height-mobile-menu);
   justify-content: space-between;
   padding: 0 2rem;
+  transition: background-color var(--transition-default);
+
+  .transparent:not(.scrolled) & {
+    background-color: transparent;
+  }
 }
 
 .mobileTop {
@@ -458,6 +517,7 @@ $tx-color-transparent-dark: var(--color-black);
 }
 
 .mobileLogo {
+  display: flex;
   flex-shrink: 0;
 }
 
@@ -528,7 +588,7 @@ $tx-color-transparent-dark: var(--color-black);
   }
 }
 
-.withMobileDropdown {
+.mobileDropdownWrapper {
   border-radius: var(--radius-2);
 }
 
@@ -544,8 +604,8 @@ $tx-color-transparent-dark: var(--color-black);
   justify-content: space-between;
   padding: 1rem 1.5rem;
   text-align: left;
-  width: 100%;
   text-decoration: none;
+  width: 100%;
 
   &.isOpen {
     background-color: $bg-color-mobile-dropdown;
@@ -597,138 +657,66 @@ $tx-color-transparent-dark: var(--color-black);
   }
 }
 
-.chevron {
-  transition: transform var(--transition-default);
-}
+// TRANSPARENT OVERRIDES
 
-.chevronOpen {
-  transform: rotate(180deg);
-}
-
-.transparent {
-  .topBar {
-    background-color: transparent;
-    border-bottom-color: transparent;
-    transition:
-      background-color var(--transition-default),
-      border-color var(--transition-default);
-  }
-
-  .main {
-    background-color: transparent;
-    transition: background-color var(--transition-default);
-  }
-
-  .mobileBar {
-    background-color: transparent;
-    transition: background-color var(--transition-default);
-  }
-
+.transparent:not(.scrolled) {
   &.textLight {
-    --t-tx: #{$tx-color-transparent-light};
-    --t-bg-hover: #{$bg-color-transparent-hover-light};
-    --t-bg-hover-top: #{$bg-color-transparent-hover-light};
-    --t-tx-hover: #{$tx-color-transparent-light};
-    --t-trigger-after: none;
-  }
-
-  &.textDark {
-    --t-tx: #{$tx-color-transparent-dark};
-    --t-bg-hover: #{$bg-color-transparent-hover-dark};
-    --t-bg-hover-top: #{$bg-color-transparent-hover-dark};
-    --t-tx-hover: #{$tx-color-transparent-dark};
-    --t-trigger-after: none;
-  }
-
-  &.overlayTop-light {
-    --t-bg-topbar: #{$bg-color-transparent-topbar-light};
-  }
-
-  &.overlayTop-dark {
-    --t-bg-topbar: #{$bg-color-transparent-topbar-dark};
-  }
-
-  &.overlayMain-light {
-    --t-bg-main: #{$bg-color-transparent-main-light};
-  }
-
-  &.overlayMain-dark {
-    --t-bg-main: #{$bg-color-transparent-main-dark};
-  }
-
-  &.scrolled {
-    --t-bg-topbar: #{$bg-color-topbar};
-    --t-bg-main: #{$bg-color-header};
-    --t-tx: #{$tx-color-link};
-    --t-bg-hover: #{$bg-color-link-active};
-    --t-bg-hover-top: transparent;
-    --t-tx-hover: #{$tx-color-link-active};
-    --t-trigger-after: block;
-
-    .topBar {
-      border-bottom-color: $bd-color-topbar;
-    }
-
-    .mobileBar {
-      background-color: $bg-color-header;
-    }
-  }
-
-  &.textLight,
-  &.textDark,
-  &.scrolled {
     .topLink,
-    .topTrigger,
+    .topDropdownTrigger,
     .mainLink,
     .mainDropdownTrigger,
     .mobileBar .mobileToggle {
-      color: var(--t-tx);
+      color: $tx-color-transparent-light;
     }
 
     .mainLink:hover,
     .mainLink:focus-visible,
-    .mainDropdownTrigger:hover,
-    .mainDropdownTrigger:focus-visible,
-    .withMainDropdown:hover .mainDropdownTrigger,
-    .withMainDropdown:focus-within .mainDropdownTrigger {
-      background-color: var(--t-bg-hover);
-      color: var(--t-tx-hover);
+    .mainDropdownWrapper:hover .mainDropdownTrigger,
+    .mainDropdownWrapper:focus-within .mainDropdownTrigger {
+      background-color: $bg-color-transparent-light-active;
+      color: $tx-color-transparent-light;
     }
 
-    .withMainDropdown:hover .chevron,
-    .withMainDropdown:focus-within .chevron,
-    .withTopDropdown:hover .chevron,
-    .withTopDropdown:focus-within .chevron {
-      color: var(--t-tx-hover);
+    .mainDropdownWrapper:hover .chevron,
+    .mainDropdownWrapper:focus-within .chevron,
+    .topDropdownWrapper:hover .chevron,
+    .topDropdownWrapper:focus-within .chevron {
+      color: $tx-color-transparent-light;
     }
 
-    .topTrigger:hover,
-    .topTrigger:focus-visible,
-    .withTopDropdown:hover .topTrigger,
-    .withTopDropdown:focus-within .topTrigger {
-      background-color: var(--t-bg-hover-top);
-      border-color: transparent;
-      color: var(--t-tx-hover);
-
-      &::after {
-        display: var(--t-trigger-after);
-      }
+    .topDropdownWrapper:hover .topDropdownTrigger,
+    .topDropdownWrapper:focus-within .topDropdownTrigger {
+      color: $tx-color-transparent-light;
     }
   }
 
-  &.overlayTop-light,
-  &.overlayTop-dark,
-  &.scrolled {
-    .topBar {
-      background-color: var(--t-bg-topbar);
+  &.textDark {
+    .topLink,
+    .topDropdownTrigger,
+    .mainLink,
+    .mainDropdownTrigger,
+    .mobileBar .mobileToggle {
+      color: $tx-color-transparent-dark;
     }
-  }
 
-  &.overlayMain-light,
-  &.overlayMain-dark,
-  &.scrolled {
-    .main {
-      background-color: var(--t-bg-main);
+    .mainLink:hover,
+    .mainLink:focus-visible,
+    .mainDropdownWrapper:hover .mainDropdownTrigger,
+    .mainDropdownWrapper:focus-within .mainDropdownTrigger {
+      background-color: $bg-color-transparent-dark-active;
+      color: $tx-color-transparent-dark;
+    }
+
+    .mainDropdownWrapper:hover .chevron,
+    .mainDropdownWrapper:focus-within .chevron,
+    .topDropdownWrapper:hover .chevron,
+    .topDropdownWrapper:focus-within .chevron {
+      color: $tx-color-transparent-dark;
+    }
+
+    .topDropdownWrapper:hover .topDropdownTrigger,
+    .topDropdownWrapper:focus-within .topDropdownTrigger {
+      color: $tx-color-transparent-dark;
     }
   }
 }

@@ -31,7 +31,7 @@ export function HeaderTopDropdown({
   return (
     <div
       ref={itemRef}
-      className={clsx(styles.withTopDropdown, className)}
+      className={clsx(styles.topDropdownWrapper, className)}
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
       onFocusCapture={handleFocus}
@@ -46,7 +46,7 @@ export function HeaderTopDropdown({
         aria-haspopup="menu"
         aria-expanded={isOpen}
         aria-current={current ? 'page' : undefined}
-        className={styles.topTrigger}
+        className={styles.topDropdownTrigger}
         onClick={isLink ? undefined : () => setIsOpen((prev) => !prev)}
         onKeyDown={handleKeyDown}
       >

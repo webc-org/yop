@@ -111,6 +111,7 @@ export type HeaderMainLinkTypes = ComponentPropsWithRef<'a'> & {
   asChild?: boolean
   children: ReactNode
   current?: boolean
+  icon?: boolean
 }
 
 export type HeaderMainDropdownLinkTypes = ComponentPropsWithRef<'a'> & {

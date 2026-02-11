@@ -136,7 +136,7 @@ export function HeaderRoot({
         {...rest}
       >
         <div
-          className={clsx(styles.overlay, isOpen && styles.isOpen)}
+          className={clsx(styles.mobileOverlay, isOpen && styles.isOpen)}
           onClick={() => setIsOpen(false)}
           aria-hidden="true"
         />

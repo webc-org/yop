@@ -57,18 +57,34 @@ function HeaderLogo() {
   )
 }
 
-function HeaderActions() {
+function HeaderActions({ button }: { button?: boolean }) {
   const { isTransparent, textColor } = useHeader()
   const contrast = isTransparent && textColor === 'light'
 
-  return (
+  return button ? (
     <HeaderMainNav>
       <Button appearance="outline" variant="primary" contrast={contrast}>
         Sign In
       </Button>
+
       <Button appearance="button" variant="primary" contrast={contrast}>
         Get Started
       </Button>
+    </HeaderMainNav>
+  ) : (
+    <HeaderMainNav>
+      <HeaderMainLink asChild icon>
+        <Link href="/" appearance="icon" className="icon-github" />
+      </HeaderMainLink>
+
+      <HeaderMainLink asChild icon>
+        <Link
+          href="/"
+          appearance="icon"
+          variant="secondary"
+          className="icon-circle-user"
+        />
+      </HeaderMainLink>
     </HeaderMainNav>
   )
 }
@@ -266,14 +282,7 @@ export const Default: Story = {
           </HeaderMainLink>
         </HeaderMainNav>
 
-        <HeaderMainNav>
-          <Button appearance="outline" variant="primary">
-            Connexion
-          </Button>
-          <Button appearance="button" variant="primary">
-            Inscription
-          </Button>
-        </HeaderMainNav>
+        <HeaderActions />
       </HeaderMain>
 
       <HeaderMobile>
@@ -328,11 +337,7 @@ export const WithTopBar: Story = {
           </HeaderMainLink>
         </HeaderMainNav>
 
-        <HeaderMainNav>
-          <Button appearance="button" variant="primary">
-            Commencer
-          </Button>
-        </HeaderMainNav>
+        <HeaderActions />
       </HeaderMain>
 
       <HeaderMobile>
@@ -371,11 +376,7 @@ export const WithDropdowns: Story = {
           </HeaderMainLink>
         </HeaderMainNav>
 
-        <HeaderMainNav>
-          <Link href="/" appearance="button" variant="primary">
-            Démo
-          </Link>
-        </HeaderMainNav>
+        <HeaderActions />
       </HeaderMain>
 
       <HeaderMobile>
@@ -414,14 +415,7 @@ export const MegaMenu: Story = {
           </HeaderMainLink>
         </HeaderMainNav>
 
-        <HeaderMainNav>
-          <Link href="/" appearance="outline" variant="primary">
-            Se connecter
-          </Link>
-          <Link href="/" appearance="button" variant="primary">
-            Essai gratuit
-          </Link>
-        </HeaderMainNav>
+        <HeaderActions />
       </HeaderMain>
 
       <HeaderMobile>

@@ -8,6 +8,7 @@ export function HeaderMainLink({
   children,
   className,
   current,
+  icon,
   ...props
 }: HeaderMainLinkTypes) {
   const Comp = asChild ? Slot : 'a'
@@ -15,6 +16,7 @@ export function HeaderMainLink({
     <Comp
       className={clsx(
         styles.mainLink,
+        icon && styles.icon,
         current && styles.current,
         className
       )}

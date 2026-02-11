@@ -10,7 +10,7 @@ export function HeaderMain({
   ...rest
 }: HeaderMainTypes) {
   return (
-    <div ref={ref} className={clsx(styles.main, className)} {...rest}>
+    <div ref={ref} className={clsx(styles.mainBar, className)} {...rest}>
       <div className={clsx(styles.mainContainer, containerClassName)}>
         {children}
       </div>

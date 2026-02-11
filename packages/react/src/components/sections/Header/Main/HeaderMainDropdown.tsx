@@ -33,7 +33,7 @@ export function HeaderMainDropdown({
     <div
       ref={itemRef}
       className={clsx(
-        styles.withMainDropdown,
+        styles.mainDropdownWrapper,
         mega && styles.mainDropdownHasMega,
         current && styles.mainDropdownCurrent,
         className

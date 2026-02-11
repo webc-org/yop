@@ -28,7 +28,7 @@ export function HeaderMobileDropdown({
   return (
     <div
       ref={ref}
-      className={clsx(styles.withMobileDropdown, className)}
+      className={clsx(styles.mobileDropdownWrapper, className)}
       {...rest}
     >
       <Button
