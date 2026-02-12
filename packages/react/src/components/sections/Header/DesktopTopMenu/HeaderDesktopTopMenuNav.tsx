@@ -1,22 +1,22 @@
 import clsx from 'clsx'
 import { useHeaderNavLabel } from '../useHeaderNavLabel'
 import styles from '../Header.module.scss'
-import type { MobileMainMenuNavTypes } from '../Header.types'
+import type { HeaderDesktopTopMenuNavTypes } from '../Header.types'
 
-export function MobileMainMenuNav({
+export function HeaderDesktopTopMenuNav({
   ref,
   children,
   className,
   'aria-label': ariaLabel,
   ...rest
-}: MobileMainMenuNavTypes) {
-  const label = useHeaderNavLabel('mobile', ariaLabel)
+}: HeaderDesktopTopMenuNavTypes) {
+  const label = useHeaderNavLabel('top', ariaLabel)
 
   return (
     <nav
       ref={ref}
       aria-label={label}
-      className={clsx(styles.mobileMainMenuNav, className)}
+      className={clsx(styles.topNav, className)}
       {...rest}
     >
       {children}

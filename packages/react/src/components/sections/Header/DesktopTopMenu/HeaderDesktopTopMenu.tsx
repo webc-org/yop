@@ -2,9 +2,9 @@ import type { CSSProperties } from 'react'
 import clsx from 'clsx'
 import { useHeader } from '../HeaderContext'
 import styles from '../Header.module.scss'
-import type { TopMenuTypes } from '../Header.types'
+import type { HeaderDesktopTopMenuTypes } from '../Header.types'
 
-export function TopMenu({
+export function HeaderDesktopTopMenu({
   ref,
   children,
   className,
@@ -14,7 +14,7 @@ export function TopMenu({
   textColor: textColorProp,
   style,
   ...rest
-}: TopMenuTypes) {
+}: HeaderDesktopTopMenuTypes) {
   const { isScrolled, textColor: contextTextColor } = useHeader()
   const textColor = textColorProp ?? contextTextColor
   const opacity = isScrolled ? '1' : bgOpacity

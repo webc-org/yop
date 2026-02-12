@@ -3,9 +3,9 @@ import { Button } from 'components'
 import { ChevronDown } from 'lucide-react'
 import { useHeaderDropdown } from '../useHeaderDropdown'
 import styles from '../Header.module.scss'
-import type { MainMenuDropdownTypes } from '../Header.types'
+import type { HeaderDesktopMainMenuDropdownTypes } from '../Header.types'
 
-export function MainMenuDropdown({
+export function HeaderDesktopMainMenuDropdown({
   children,
   label,
   href,
@@ -14,7 +14,7 @@ export function MainMenuDropdown({
   current = false,
   className,
   ...rest
-}: MainMenuDropdownTypes) {
+}: HeaderDesktopMainMenuDropdownTypes) {
   const isLink = Boolean(href)
   const TriggerComp = href ? as || 'a' : Button
 

@@ -6,34 +6,34 @@ import { Button } from 'form/Button'
 import { fireEvent, render, screen } from 'utils/Test'
 import { describe, expect, it } from 'vitest'
 import {
+  HeaderDesktopMainMenu,
+  HeaderDesktopMainMenuDropdown,
+  HeaderDesktopMainMenuDropdownLink,
+  HeaderDesktopMainMenuLink,
+  HeaderDesktopMainMenuLogo,
+  HeaderDesktopMainMenuNav,
+  HeaderDesktopTopMenu,
+  HeaderDesktopTopMenuDropdown,
+  HeaderDesktopTopMenuDropdownLink,
+  HeaderDesktopTopMenuLink,
+  HeaderDesktopTopMenuNav,
+  HeaderMobileMainMenu,
+  HeaderMobileMainMenuDropdown,
+  HeaderMobileMainMenuDropdownLink,
+  HeaderMobileMainMenuLink,
   HeaderMobileRoot,
+  HeaderMobileTopMenu,
+  HeaderMobileTopMenuToggle,
   HeaderRoot,
-  MainMenu,
-  MainMenuDropdown,
-  MainMenuDropdownLink,
-  MainMenuLink,
-  MainMenuLogo,
-  MainMenuNav,
-  MobileMainMenu,
-  MobileMainMenuDropdown,
-  MobileMainMenuDropdownLink,
-  MobileMainMenuLink,
-  MobileTopMenu,
-  MobileTopMenuToggle,
-  TopMenu,
-  TopMenuDropdown,
-  TopMenuDropdownLink,
-  TopMenuLink,
-  TopMenuNav,
 } from './index'
 
 describe('Header', () => {
   it('renders header with logo', () => {
     render(
       <HeaderRoot>
-        <MainMenu>
-          <MainMenuLogo>Logo</MainMenuLogo>
-        </MainMenu>
+        <HeaderDesktopMainMenu>
+          <HeaderDesktopMainMenuLogo>Logo</HeaderDesktopMainMenuLogo>
+        </HeaderDesktopMainMenu>
       </HeaderRoot>
     )
     expect(screen.getByText('Logo')).toBeInTheDocument()
@@ -42,16 +42,16 @@ describe('Header', () => {
   it('renders top bar', () => {
     render(
       <HeaderRoot>
-        <TopMenu>
-          <TopMenuNav>
-            <TopMenuLink asChild>
+        <HeaderDesktopTopMenu>
+          <HeaderDesktopTopMenuNav>
+            <HeaderDesktopTopMenuLink asChild>
               <Link href="#">Help</Link>
-            </TopMenuLink>
-          </TopMenuNav>
-        </TopMenu>
-        <MainMenu>
-          <MainMenuLogo>Logo</MainMenuLogo>
-        </MainMenu>
+            </HeaderDesktopTopMenuLink>
+          </HeaderDesktopTopMenuNav>
+        </HeaderDesktopTopMenu>
+        <HeaderDesktopMainMenu>
+          <HeaderDesktopMainMenuLogo>Logo</HeaderDesktopMainMenuLogo>
+        </HeaderDesktopMainMenu>
       </HeaderRoot>
     )
     expect(screen.getByText('Help')).toBeInTheDocument()
@@ -60,21 +60,21 @@ describe('Header', () => {
   it('renders top bar item with dropdown', () => {
     render(
       <HeaderRoot>
-        <TopMenu>
-          <TopMenuNav>
-            <TopMenuDropdown label="Language">
-              <TopMenuDropdownLink asChild>
+        <HeaderDesktopTopMenu>
+          <HeaderDesktopTopMenuNav>
+            <HeaderDesktopTopMenuDropdown label="Language">
+              <HeaderDesktopTopMenuDropdownLink asChild>
                 <Link href="#">Option 1</Link>
-              </TopMenuDropdownLink>
-              <TopMenuDropdownLink asChild>
+              </HeaderDesktopTopMenuDropdownLink>
+              <HeaderDesktopTopMenuDropdownLink asChild>
                 <Link href="#">Option 2</Link>
-              </TopMenuDropdownLink>
-            </TopMenuDropdown>
-          </TopMenuNav>
-        </TopMenu>
-        <MainMenu>
-          <MainMenuLogo>Logo</MainMenuLogo>
-        </MainMenu>
+              </HeaderDesktopTopMenuDropdownLink>
+            </HeaderDesktopTopMenuDropdown>
+          </HeaderDesktopTopMenuNav>
+        </HeaderDesktopTopMenu>
+        <HeaderDesktopMainMenu>
+          <HeaderDesktopMainMenuLogo>Logo</HeaderDesktopMainMenuLogo>
+        </HeaderDesktopMainMenu>
       </HeaderRoot>
     )
 
@@ -90,13 +90,13 @@ describe('Header', () => {
   it('renders nav with aria-label', () => {
     render(
       <HeaderRoot>
-        <MainMenu>
-          <MainMenuNav aria-label="Main menu">
-            <MainMenuLink asChild>
+        <HeaderDesktopMainMenu>
+          <HeaderDesktopMainMenuNav aria-label="Main menu">
+            <HeaderDesktopMainMenuLink asChild>
               <Link href="/">Home</Link>
-            </MainMenuLink>
-          </MainMenuNav>
-        </MainMenu>
+            </HeaderDesktopMainMenuLink>
+          </HeaderDesktopMainMenuNav>
+        </HeaderDesktopMainMenu>
       </HeaderRoot>
     )
     const nav = document.querySelector('nav[aria-label="Main menu"]')
@@ -106,16 +106,16 @@ describe('Header', () => {
   it('renders nav links', () => {
     render(
       <HeaderRoot>
-        <MainMenu>
-          <MainMenuNav>
-            <MainMenuLink asChild>
+        <HeaderDesktopMainMenu>
+          <HeaderDesktopMainMenuNav>
+            <HeaderDesktopMainMenuLink asChild>
               <Link href="/">Home</Link>
-            </MainMenuLink>
-            <MainMenuLink asChild>
+            </HeaderDesktopMainMenuLink>
+            <HeaderDesktopMainMenuLink asChild>
               <Link href="/about">About</Link>
-            </MainMenuLink>
-          </MainMenuNav>
-        </MainMenu>
+            </HeaderDesktopMainMenuLink>
+          </HeaderDesktopMainMenuNav>
+        </HeaderDesktopMainMenu>
       </HeaderRoot>
     )
     expect(screen.getByText('Home')).toBeInTheDocument()
@@ -125,11 +125,11 @@ describe('Header', () => {
   it('renders actions', () => {
     render(
       <HeaderRoot>
-        <MainMenu>
-          <MainMenuNav>
+        <HeaderDesktopMainMenu>
+          <HeaderDesktopMainMenuNav>
             <Button>Login</Button>
-          </MainMenuNav>
-        </MainMenu>
+          </HeaderDesktopMainMenuNav>
+        </HeaderDesktopMainMenu>
       </HeaderRoot>
     )
     expect(screen.getByText('Login')).toBeInTheDocument()
@@ -139,18 +139,18 @@ describe('Header', () => {
     const user = userEvent.setup()
     render(
       <HeaderRoot>
-        <MainMenu>
-          <MainMenuLogo>Logo</MainMenuLogo>
-        </MainMenu>
+        <HeaderDesktopMainMenu>
+          <HeaderDesktopMainMenuLogo>Logo</HeaderDesktopMainMenuLogo>
+        </HeaderDesktopMainMenu>
         <HeaderMobileRoot>
-          <MobileTopMenu>
-            <MobileTopMenuToggle data-testid="mobile-toggle" />
-          </MobileTopMenu>
-          <MobileMainMenu>
-            <MobileMainMenuLink asChild>
+          <HeaderMobileTopMenu>
+            <HeaderMobileTopMenuToggle data-testid="mobile-toggle" />
+          </HeaderMobileTopMenu>
+          <HeaderMobileMainMenu>
+            <HeaderMobileMainMenuLink asChild>
               <Link href="/">Home</Link>
-            </MobileMainMenuLink>
-          </MobileMainMenu>
+            </HeaderMobileMainMenuLink>
+          </HeaderMobileMainMenu>
         </HeaderMobileRoot>
       </HeaderRoot>
     )
@@ -168,14 +168,14 @@ describe('Header', () => {
   it('mobile toggle has aria-controls', () => {
     render(
       <HeaderRoot>
-        <MainMenu>
-          <MainMenuLogo>Logo</MainMenuLogo>
-        </MainMenu>
+        <HeaderDesktopMainMenu>
+          <HeaderDesktopMainMenuLogo>Logo</HeaderDesktopMainMenuLogo>
+        </HeaderDesktopMainMenu>
         <HeaderMobileRoot>
-          <MobileTopMenu>
-            <MobileTopMenuToggle data-testid="mobile-toggle" />
-          </MobileTopMenu>
-          <MobileMainMenu>Menu</MobileMainMenu>
+          <HeaderMobileTopMenu>
+            <HeaderMobileTopMenuToggle data-testid="mobile-toggle" />
+          </HeaderMobileTopMenu>
+          <HeaderMobileMainMenu>Menu</HeaderMobileMainMenu>
         </HeaderMobileRoot>
       </HeaderRoot>
     )
@@ -189,15 +189,15 @@ describe('Header', () => {
   it('dropdown has aria-haspopup and aria-expanded', () => {
     render(
       <HeaderRoot>
-        <MainMenu>
-          <MainMenuNav>
-            <MainMenuDropdown label="Products">
-              <MainMenuDropdownLink asChild>
+        <HeaderDesktopMainMenu>
+          <HeaderDesktopMainMenuNav>
+            <HeaderDesktopMainMenuDropdown label="Products">
+              <HeaderDesktopMainMenuDropdownLink asChild>
                 <Link href="#">Option</Link>
-              </MainMenuDropdownLink>
-            </MainMenuDropdown>
-          </MainMenuNav>
-        </MainMenu>
+              </HeaderDesktopMainMenuDropdownLink>
+            </HeaderDesktopMainMenuDropdown>
+          </HeaderDesktopMainMenuNav>
+        </HeaderDesktopMainMenu>
       </HeaderRoot>
     )
 
@@ -214,22 +214,22 @@ describe('Header', () => {
     const user = userEvent.setup()
     render(
       <HeaderRoot>
-        <MainMenu>
-          <MainMenuLogo>Logo</MainMenuLogo>
-        </MainMenu>
+        <HeaderDesktopMainMenu>
+          <HeaderDesktopMainMenuLogo>Logo</HeaderDesktopMainMenuLogo>
+        </HeaderDesktopMainMenu>
         <HeaderMobileRoot>
-          <MobileTopMenu>
-            <MobileTopMenuToggle data-testid="mobile-toggle" />
-          </MobileTopMenu>
-          <MobileMainMenu>
-            <MobileMainMenuDropdown label="Products">
+          <HeaderMobileTopMenu>
+            <HeaderMobileTopMenuToggle data-testid="mobile-toggle" />
+          </HeaderMobileTopMenu>
+          <HeaderMobileMainMenu>
+            <HeaderMobileMainMenuDropdown label="Products">
               <div>
-                <MobileMainMenuDropdownLink asChild>
+                <HeaderMobileMainMenuDropdownLink asChild>
                   <Link href="#">Software</Link>
-                </MobileMainMenuDropdownLink>
+                </HeaderMobileMainMenuDropdownLink>
               </div>
-            </MobileMainMenuDropdown>
-          </MobileMainMenu>
+            </HeaderMobileMainMenuDropdown>
+          </HeaderMobileMainMenu>
         </HeaderMobileRoot>
       </HeaderRoot>
     )
@@ -248,18 +248,18 @@ describe('Header', () => {
     const user = userEvent.setup()
     render(
       <HeaderRoot>
-        <MainMenu>
-          <MainMenuLogo>Logo</MainMenuLogo>
-        </MainMenu>
+        <HeaderDesktopMainMenu>
+          <HeaderDesktopMainMenuLogo>Logo</HeaderDesktopMainMenuLogo>
+        </HeaderDesktopMainMenu>
         <HeaderMobileRoot>
-          <MobileTopMenu>
-            <MobileTopMenuToggle data-testid="mobile-toggle" />
-          </MobileTopMenu>
-          <MobileMainMenu>
-            <MobileMainMenuLink asChild>
+          <HeaderMobileTopMenu>
+            <HeaderMobileTopMenuToggle data-testid="mobile-toggle" />
+          </HeaderMobileTopMenu>
+          <HeaderMobileMainMenu>
+            <HeaderMobileMainMenuLink asChild>
               <Link href="/">Home</Link>
-            </MobileMainMenuLink>
-          </MobileMainMenu>
+            </HeaderMobileMainMenuLink>
+          </HeaderMobileMainMenu>
         </HeaderMobileRoot>
       </HeaderRoot>
     )
@@ -276,9 +276,9 @@ describe('Header', () => {
     const ref = { current: null }
     render(
       <HeaderRoot ref={ref}>
-        <MainMenu>
-          <MainMenuLogo>Logo</MainMenuLogo>
-        </MainMenu>
+        <HeaderDesktopMainMenu>
+          <HeaderDesktopMainMenuLogo>Logo</HeaderDesktopMainMenuLogo>
+        </HeaderDesktopMainMenu>
       </HeaderRoot>
     )
     expect(ref.current).toBeInstanceOf(HTMLElement)

@@ -2,9 +2,9 @@ import { type CSSProperties, useCallback, useEffect, useRef } from 'react'
 import clsx from 'clsx'
 import { useHeader } from '../HeaderContext'
 import styles from '../Header.module.scss'
-import type { MobileMainMenuTypes } from '../Header.types'
+import type { HeaderMobileMainMenuTypes } from '../Header.types'
 
-export function MobileMainMenu({
+export function HeaderMobileMainMenu({
   ref,
   children,
   className,
@@ -13,7 +13,7 @@ export function MobileMainMenu({
   textColor,
   style,
   ...rest
-}: MobileMainMenuTypes) {
+}: HeaderMobileMainMenuTypes) {
   const { isOpen, mobileMenuId } = useHeader()
   const customStyles = bgColor
     ? ({

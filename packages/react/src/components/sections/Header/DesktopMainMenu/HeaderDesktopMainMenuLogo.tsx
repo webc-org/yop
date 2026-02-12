@@ -1,13 +1,13 @@
 import clsx from 'clsx'
 import styles from '../Header.module.scss'
-import type { MainMenuLogoTypes } from '../Header.types'
+import type { HeaderDesktopMainMenuLogoTypes } from '../Header.types'
 
-export function MainMenuLogo({
+export function HeaderDesktopMainMenuLogo({
   ref,
   children,
   className,
   ...rest
-}: MainMenuLogoTypes) {
+}: HeaderDesktopMainMenuLogoTypes) {
   return (
     <div ref={ref} className={clsx(styles.mainLogo, className)} {...rest}>
       {children}

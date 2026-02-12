@@ -9,7 +9,7 @@ export type HeaderTypes = ComponentPropsWithRef<'header'> & {
   textColor?: HeaderTextColor
 }
 
-export type TopMenuTypes = ComponentPropsWithRef<'div'> & {
+export type HeaderDesktopTopMenuTypes = ComponentPropsWithRef<'div'> & {
   children: ReactNode
   containerClassName?: string
   bgColor?: string
@@ -17,20 +17,21 @@ export type TopMenuTypes = ComponentPropsWithRef<'div'> & {
   textColor?: HeaderTextColor
 }
 
-export type TopMenuNavTypes = ComponentPropsWithRef<'nav'> & {
+export type HeaderDesktopTopMenuNavTypes = ComponentPropsWithRef<'nav'> & {
   children: ReactNode
   'aria-label'?: string
 }
 
-export type TopMenuDropdownTypes = ComponentPropsWithRef<'div'> & {
-  children: ReactNode
-  label: ReactNode
-  href?: string
-  as?: ElementType
-  current?: boolean
-}
+export type HeaderDesktopTopMenuDropdownTypes =
+  ComponentPropsWithRef<'div'> & {
+    children: ReactNode
+    label: ReactNode
+    href?: string
+    as?: ElementType
+    current?: boolean
+  }
 
-export type MainMenuTypes = ComponentPropsWithRef<'div'> & {
+export type HeaderDesktopMainMenuTypes = ComponentPropsWithRef<'div'> & {
   children: ReactNode
   containerClassName?: string
   bgColor?: string
@@ -38,33 +39,36 @@ export type MainMenuTypes = ComponentPropsWithRef<'div'> & {
   textColor?: HeaderTextColor
 }
 
-export type MainMenuLogoTypes = ComponentPropsWithRef<'div'> & {
-  children: ReactNode
-}
+export type HeaderDesktopMainMenuLogoTypes =
+  ComponentPropsWithRef<'div'> & {
+    children: ReactNode
+  }
 
-export type MainMenuNavTypes = ComponentPropsWithRef<'nav'> & {
-  children: ReactNode
-  'aria-label'?: string
-}
+export type HeaderDesktopMainMenuNavTypes =
+  ComponentPropsWithRef<'nav'> & {
+    children: ReactNode
+    'aria-label'?: string
+  }
 
-export type MainMenuDropdownTypes = ComponentPropsWithRef<'div'> & {
-  children: ReactNode
-  label: ReactNode
-  href?: string
-  as?: ElementType
-  mega?: boolean
-  current?: boolean
-}
+export type HeaderDesktopMainMenuDropdownTypes =
+  ComponentPropsWithRef<'div'> & {
+    children: ReactNode
+    label: ReactNode
+    href?: string
+    as?: ElementType
+    mega?: boolean
+    current?: boolean
+  }
 
 export type HeaderMobileRootTypes = ComponentPropsWithRef<'div'> & {
   children: ReactNode
 }
 
-export type MobileTopMenuLogoTypes = ComponentPropsWithRef<'div'> & {
+export type HeaderMobileTopMenuLogoTypes = ComponentPropsWithRef<'div'> & {
   children: ReactNode
 }
 
-export type MobileTopMenuTypes = ComponentPropsWithRef<'div'> & {
+export type HeaderMobileTopMenuTypes = ComponentPropsWithRef<'div'> & {
   children: ReactNode
   bgColor?: string
   bgOpacity?: string
@@ -72,7 +76,7 @@ export type MobileTopMenuTypes = ComponentPropsWithRef<'div'> & {
   containerClassName?: string
 }
 
-export type MobileTopMenuToggleTypes = Omit<
+export type HeaderMobileTopMenuToggleTypes = Omit<
   ComponentPropsWithRef<'button'>,
   'children'
 > & {
@@ -81,61 +85,64 @@ export type MobileTopMenuToggleTypes = Omit<
   menuLabel?: string
 }
 
-export type MobileMainMenuTypes = ComponentPropsWithRef<'div'> & {
+export type HeaderMobileMainMenuTypes = ComponentPropsWithRef<'div'> & {
   children: ReactNode
   'aria-label'?: string
   bgColor?: string
   textColor?: HeaderTextColor
 }
 
-export type MobileMainMenuTopTypes = ComponentPropsWithRef<'div'> & {
+export type HeaderMobileMainMenuTopTypes = ComponentPropsWithRef<'div'> & {
   children: ReactNode
   'aria-label'?: string
 }
 
-export type MobileMainMenuNavTypes = ComponentPropsWithRef<'nav'> & {
+export type HeaderMobileMainMenuNavTypes = ComponentPropsWithRef<'nav'> & {
   children: ReactNode
   'aria-label'?: string
 }
 
-export type MobileMainMenuDropdownTypes = ComponentPropsWithRef<'div'> & {
-  children: ReactNode
-  label: ReactNode
-  baseId?: string
-}
+export type HeaderMobileMainMenuDropdownTypes =
+  ComponentPropsWithRef<'div'> & {
+    children: ReactNode
+    label: ReactNode
+    baseId?: string
+  }
 
-export type TopMenuLinkTypes = ComponentPropsWithRef<'a'> & {
+export type HeaderDesktopTopMenuLinkTypes = ComponentPropsWithRef<'a'> & {
   asChild?: boolean
   children: ReactNode
   current?: boolean
 }
 
-export type TopMenuDropdownLinkTypes = ComponentPropsWithRef<'a'> & {
-  asChild?: boolean
-  children: ReactNode
-  current?: boolean
-}
+export type HeaderDesktopTopMenuDropdownLinkTypes =
+  ComponentPropsWithRef<'a'> & {
+    asChild?: boolean
+    children: ReactNode
+    current?: boolean
+  }
 
-export type MainMenuLinkTypes = ComponentPropsWithRef<'a'> & {
+export type HeaderDesktopMainMenuLinkTypes = ComponentPropsWithRef<'a'> & {
   asChild?: boolean
   children: ReactNode
   current?: boolean
   icon?: boolean
 }
 
-export type MainMenuDropdownLinkTypes = ComponentPropsWithRef<'a'> & {
+export type HeaderDesktopMainMenuDropdownLinkTypes =
+  ComponentPropsWithRef<'a'> & {
+    asChild?: boolean
+    children: ReactNode
+    current?: boolean
+  }
+
+export type HeaderMobileMainMenuLinkTypes = ComponentPropsWithRef<'a'> & {
   asChild?: boolean
   children: ReactNode
   current?: boolean
 }
 
-export type MobileMainMenuLinkTypes = ComponentPropsWithRef<'a'> & {
-  asChild?: boolean
-  children: ReactNode
-  current?: boolean
-}
-
-export type MobileMainMenuDropdownLinkTypes =
+export type HeaderMobileMainMenuDropdownLinkTypes =
   ComponentPropsWithRef<'a'> & {
     asChild?: boolean
     children: ReactNode

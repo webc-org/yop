@@ -1,20 +1,22 @@
 import clsx from 'clsx'
 import { Slot } from 'utils'
 import styles from '../Header.module.scss'
-import type { TopMenuDropdownLinkTypes } from '../Header.types'
+import type { HeaderDesktopMainMenuLinkTypes } from '../Header.types'
 
-export function TopMenuDropdownLink({
+export function HeaderDesktopMainMenuLink({
   asChild,
   children,
   className,
   current,
+  icon,
   ...props
-}: TopMenuDropdownLinkTypes) {
+}: HeaderDesktopMainMenuLinkTypes) {
   const Comp = asChild ? Slot : 'a'
   return (
     <Comp
       className={clsx(
-        styles.topDropdownLink,
+        styles.mainLink,
+        icon && styles.icon,
         current && styles.current,
         className
       )}

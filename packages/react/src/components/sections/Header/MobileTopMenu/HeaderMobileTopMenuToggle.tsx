@@ -3,16 +3,16 @@ import { Button } from 'components'
 import { Menu, X } from 'lucide-react'
 import { useHeader } from '../HeaderContext'
 import styles from '../Header.module.scss'
-import type { MobileTopMenuToggleTypes } from '../Header.types'
+import type { HeaderMobileTopMenuToggleTypes } from '../Header.types'
 
-export function MobileTopMenuToggle({
+export function HeaderMobileTopMenuToggle({
   ref,
   label,
   closeLabel = 'Close',
   menuLabel = 'Menu',
   className,
   ...rest
-}: MobileTopMenuToggleTypes) {
+}: HeaderMobileTopMenuToggleTypes) {
   const { isOpen, toggle, mobileMenuId, mobileToggleId } = useHeader()
 
   return (

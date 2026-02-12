@@ -19,28 +19,28 @@ import {
   BannerTitle,
 } from '../../modules/Banner'
 import {
+  HeaderDesktopMainMenu,
+  HeaderDesktopMainMenuDropdown,
+  HeaderDesktopMainMenuDropdownLink,
+  HeaderDesktopMainMenuLink,
+  HeaderDesktopMainMenuLogo,
+  HeaderDesktopMainMenuNav,
+  HeaderDesktopTopMenu,
+  HeaderDesktopTopMenuDropdown,
+  HeaderDesktopTopMenuDropdownLink,
+  HeaderDesktopTopMenuLink,
+  HeaderDesktopTopMenuNav,
+  HeaderMobileMainMenu,
+  HeaderMobileMainMenuDropdown,
+  HeaderMobileMainMenuDropdownLink,
+  HeaderMobileMainMenuLink,
+  HeaderMobileMainMenuNav,
+  HeaderMobileMainMenuTop,
   HeaderMobileRoot,
+  HeaderMobileTopMenu,
+  HeaderMobileTopMenuLogo,
+  HeaderMobileTopMenuToggle,
   HeaderRoot,
-  MainMenu,
-  MainMenuDropdown,
-  MainMenuDropdownLink,
-  MainMenuLink,
-  MainMenuLogo,
-  MainMenuNav,
-  MobileMainMenu,
-  MobileMainMenuDropdown,
-  MobileMainMenuDropdownLink,
-  MobileMainMenuLink,
-  MobileMainMenuNav,
-  MobileMainMenuTop,
-  MobileTopMenu,
-  MobileTopMenuLogo,
-  MobileTopMenuToggle,
-  TopMenu,
-  TopMenuDropdown,
-  TopMenuDropdownLink,
-  TopMenuLink,
-  TopMenuNav,
   useHeader,
 } from './index'
 
@@ -60,7 +60,7 @@ function HeaderActions({ button }: { button?: boolean }) {
   const contrast = textColor === 'light'
 
   return button ? (
-    <MainMenuNav>
+    <HeaderDesktopMainMenuNav>
       <Button appearance="outline" variant="primary" contrast={contrast}>
         Sign In
       </Button>
@@ -68,22 +68,22 @@ function HeaderActions({ button }: { button?: boolean }) {
       <Button appearance="button" variant="primary" contrast={contrast}>
         Get Started
       </Button>
-    </MainMenuNav>
+    </HeaderDesktopMainMenuNav>
   ) : (
-    <MainMenuNav>
-      <MainMenuLink asChild icon>
+    <HeaderDesktopMainMenuNav>
+      <HeaderDesktopMainMenuLink asChild icon>
         <Link href="/" appearance="icon" className="icon-github" />
-      </MainMenuLink>
+      </HeaderDesktopMainMenuLink>
 
-      <MainMenuLink asChild icon>
+      <HeaderDesktopMainMenuLink asChild icon>
         <Link
           href="/"
           appearance="icon"
           variant="secondary"
           className="icon-circle-user"
         />
-      </MainMenuLink>
-    </MainMenuNav>
+      </HeaderDesktopMainMenuLink>
+    </HeaderDesktopMainMenuNav>
   )
 }
 
@@ -105,35 +105,35 @@ type Story = StoryObj<typeof HeaderRoot>
 
 const ProductsDropdown = () => (
   <div>
-    <MainMenuDropdownLink asChild>
+    <HeaderDesktopMainMenuDropdownLink asChild>
       <Link href="/">Logiciels</Link>
-    </MainMenuDropdownLink>
-    <MainMenuDropdownLink asChild>
+    </HeaderDesktopMainMenuDropdownLink>
+    <HeaderDesktopMainMenuDropdownLink asChild>
       <Link href="/">Services</Link>
-    </MainMenuDropdownLink>
-    <MainMenuDropdownLink asChild>
+    </HeaderDesktopMainMenuDropdownLink>
+    <HeaderDesktopMainMenuDropdownLink asChild>
       <Link href="/">Formations</Link>
-    </MainMenuDropdownLink>
-    <MainMenuDropdownLink asChild>
+    </HeaderDesktopMainMenuDropdownLink>
+    <HeaderDesktopMainMenuDropdownLink asChild>
       <Link href="/">Support</Link>
-    </MainMenuDropdownLink>
+    </HeaderDesktopMainMenuDropdownLink>
   </div>
 )
 
 const LanguageDropdownContent = () => (
   <>
-    <TopMenuDropdownLink asChild>
+    <HeaderDesktopTopMenuDropdownLink asChild>
       <Link href="/">Français</Link>
-    </TopMenuDropdownLink>
-    <TopMenuDropdownLink asChild>
+    </HeaderDesktopTopMenuDropdownLink>
+    <HeaderDesktopTopMenuDropdownLink asChild>
       <Link href="/">English</Link>
-    </TopMenuDropdownLink>
-    <TopMenuDropdownLink asChild>
+    </HeaderDesktopTopMenuDropdownLink>
+    <HeaderDesktopTopMenuDropdownLink asChild>
       <Link href="/">Español</Link>
-    </TopMenuDropdownLink>
-    <TopMenuDropdownLink asChild>
+    </HeaderDesktopTopMenuDropdownLink>
+    <HeaderDesktopTopMenuDropdownLink asChild>
       <Link href="/">Deutsch</Link>
-    </TopMenuDropdownLink>
+    </HeaderDesktopTopMenuDropdownLink>
   </>
 )
 
@@ -141,155 +141,155 @@ const MegaMenuContent = () => (
   <Grid col={4} gap={2}>
     <GridItem>
       <Title level="h4">Produits</Title>
-      <MainMenuDropdownLink asChild>
+      <HeaderDesktopMainMenuDropdownLink asChild>
         <Link href="/">Logiciel A</Link>
-      </MainMenuDropdownLink>
-      <MainMenuDropdownLink asChild>
+      </HeaderDesktopMainMenuDropdownLink>
+      <HeaderDesktopMainMenuDropdownLink asChild>
         <Link href="/">Logiciel B</Link>
-      </MainMenuDropdownLink>
-      <MainMenuDropdownLink asChild>
+      </HeaderDesktopMainMenuDropdownLink>
+      <HeaderDesktopMainMenuDropdownLink asChild>
         <Link href="/">Application Mobile</Link>
-      </MainMenuDropdownLink>
+      </HeaderDesktopMainMenuDropdownLink>
     </GridItem>
     <GridItem>
       <Title level="h4">Services</Title>
-      <MainMenuDropdownLink asChild>
+      <HeaderDesktopMainMenuDropdownLink asChild>
         <Link href="/">Consulting</Link>
-      </MainMenuDropdownLink>
-      <MainMenuDropdownLink asChild>
+      </HeaderDesktopMainMenuDropdownLink>
+      <HeaderDesktopMainMenuDropdownLink asChild>
         <Link href="/">Intégration</Link>
-      </MainMenuDropdownLink>
-      <MainMenuDropdownLink asChild>
+      </HeaderDesktopMainMenuDropdownLink>
+      <HeaderDesktopMainMenuDropdownLink asChild>
         <Link href="/">Maintenance</Link>
-      </MainMenuDropdownLink>
+      </HeaderDesktopMainMenuDropdownLink>
     </GridItem>
     <GridItem>
       <Title level="h4">Ressources</Title>
-      <MainMenuDropdownLink asChild>
+      <HeaderDesktopMainMenuDropdownLink asChild>
         <Link href="/">Documentation</Link>
-      </MainMenuDropdownLink>
-      <MainMenuDropdownLink asChild>
+      </HeaderDesktopMainMenuDropdownLink>
+      <HeaderDesktopMainMenuDropdownLink asChild>
         <Link href="/">Tutoriels</Link>
-      </MainMenuDropdownLink>
-      <MainMenuDropdownLink asChild>
+      </HeaderDesktopMainMenuDropdownLink>
+      <HeaderDesktopMainMenuDropdownLink asChild>
         <Link href="/">API</Link>
-      </MainMenuDropdownLink>
+      </HeaderDesktopMainMenuDropdownLink>
     </GridItem>
     <GridItem>
       <Title level="h4">Get started</Title>
-      <MainMenuDropdownLink asChild>
+      <HeaderDesktopMainMenuDropdownLink asChild>
         <Link href="/">Free trial</Link>
-      </MainMenuDropdownLink>
-      <MainMenuDropdownLink asChild>
+      </HeaderDesktopMainMenuDropdownLink>
+      <HeaderDesktopMainMenuDropdownLink asChild>
         <Link href="/">Book a demo</Link>
-      </MainMenuDropdownLink>
-      <MainMenuDropdownLink asChild>
+      </HeaderDesktopMainMenuDropdownLink>
+      <HeaderDesktopMainMenuDropdownLink asChild>
         <Link href="/">Contact sales</Link>
-      </MainMenuDropdownLink>
+      </HeaderDesktopMainMenuDropdownLink>
     </GridItem>
   </Grid>
 )
 
 const MobileMenuContent = () => (
-  <MobileMainMenu>
-    <MobileMainMenuTop>
+  <HeaderMobileMainMenu>
+    <HeaderMobileMainMenuTop>
       <Title level="h3">Menu</Title>
-      <MobileTopMenuToggle />
-    </MobileMainMenuTop>
+      <HeaderMobileTopMenuToggle />
+    </HeaderMobileMainMenuTop>
 
-    <MobileMainMenuNav>
-      <MobileMainMenuLink asChild>
+    <HeaderMobileMainMenuNav>
+      <HeaderMobileMainMenuLink asChild>
         <Link href="/">Accueil</Link>
-      </MobileMainMenuLink>
+      </HeaderMobileMainMenuLink>
 
-      <MobileMainMenuLink asChild>
+      <HeaderMobileMainMenuLink asChild>
         <Link href="/">Produits</Link>
-      </MobileMainMenuLink>
+      </HeaderMobileMainMenuLink>
 
-      <MobileMainMenuLink asChild>
+      <HeaderMobileMainMenuLink asChild>
         <Link href="/">À propos</Link>
-      </MobileMainMenuLink>
+      </HeaderMobileMainMenuLink>
 
-      <MobileMainMenuDropdown label="Produits">
-        <MobileMainMenuDropdownLink asChild>
+      <HeaderMobileMainMenuDropdown label="Produits">
+        <HeaderMobileMainMenuDropdownLink asChild>
           <Link href="/">Logiciels</Link>
-        </MobileMainMenuDropdownLink>
-        <MobileMainMenuDropdownLink asChild>
+        </HeaderMobileMainMenuDropdownLink>
+        <HeaderMobileMainMenuDropdownLink asChild>
           <Link href="/">Services</Link>
-        </MobileMainMenuDropdownLink>
-        <MobileMainMenuDropdownLink asChild>
+        </HeaderMobileMainMenuDropdownLink>
+        <HeaderMobileMainMenuDropdownLink asChild>
           <Link href="/">Formations</Link>
-        </MobileMainMenuDropdownLink>
-      </MobileMainMenuDropdown>
+        </HeaderMobileMainMenuDropdownLink>
+      </HeaderMobileMainMenuDropdown>
 
-      <MobileMainMenuDropdown label="Services">
-        <MobileMainMenuDropdownLink asChild>
+      <HeaderMobileMainMenuDropdown label="Services">
+        <HeaderMobileMainMenuDropdownLink asChild>
           <Link href="/">Consulting</Link>
-        </MobileMainMenuDropdownLink>
-        <MobileMainMenuDropdownLink asChild>
+        </HeaderMobileMainMenuDropdownLink>
+        <HeaderMobileMainMenuDropdownLink asChild>
           <Link href="/">Support</Link>
-        </MobileMainMenuDropdownLink>
-      </MobileMainMenuDropdown>
-    </MobileMainMenuNav>
+        </HeaderMobileMainMenuDropdownLink>
+      </HeaderMobileMainMenuDropdown>
+    </HeaderMobileMainMenuNav>
 
-    <MobileMainMenuNav>
-      <MobileMainMenuLink asChild>
+    <HeaderMobileMainMenuNav>
+      <HeaderMobileMainMenuLink asChild>
         <Link href="/">Contact</Link>
-      </MobileMainMenuLink>
-      <MobileMainMenuLink asChild>
+      </HeaderMobileMainMenuLink>
+      <HeaderMobileMainMenuLink asChild>
         <Link href="/">Logiciel A</Link>
-      </MobileMainMenuLink>
-      <MobileMainMenuLink asChild>
+      </HeaderMobileMainMenuLink>
+      <HeaderMobileMainMenuLink asChild>
         <Link href="/">Logiciel B</Link>
-      </MobileMainMenuLink>
-    </MobileMainMenuNav>
+      </HeaderMobileMainMenuLink>
+    </HeaderMobileMainMenuNav>
 
-    <MobileMainMenuNav>
+    <HeaderMobileMainMenuNav>
       <Link appearance="outline" variant="primary">
         Connexion
       </Link>
       <Link appearance="button" variant="primary">
         Inscription
       </Link>
-    </MobileMainMenuNav>
-  </MobileMainMenu>
+    </HeaderMobileMainMenuNav>
+  </HeaderMobileMainMenu>
 )
 
 export const Default: Story = {
   render: (args) => (
     <HeaderRoot {...args}>
-      <MainMenu>
-        <MainMenuLogo>
+      <HeaderDesktopMainMenu>
+        <HeaderDesktopMainMenuLogo>
           <HeaderLogo />
-        </MainMenuLogo>
+        </HeaderDesktopMainMenuLogo>
 
-        <MainMenuNav>
-          <MainMenuLink asChild current>
+        <HeaderDesktopMainMenuNav>
+          <HeaderDesktopMainMenuLink asChild current>
             <Link href="/" aria-current="page">
               Accueil
             </Link>
-          </MainMenuLink>
-          <MainMenuLink asChild>
+          </HeaderDesktopMainMenuLink>
+          <HeaderDesktopMainMenuLink asChild>
             <Link href="/">Produits</Link>
-          </MainMenuLink>
-          <MainMenuLink asChild>
+          </HeaderDesktopMainMenuLink>
+          <HeaderDesktopMainMenuLink asChild>
             <Link href="/">À propos</Link>
-          </MainMenuLink>
-          <MainMenuLink asChild>
+          </HeaderDesktopMainMenuLink>
+          <HeaderDesktopMainMenuLink asChild>
             <Link href="/">Contact</Link>
-          </MainMenuLink>
-        </MainMenuNav>
+          </HeaderDesktopMainMenuLink>
+        </HeaderDesktopMainMenuNav>
 
         <HeaderActions />
-      </MainMenu>
+      </HeaderDesktopMainMenu>
 
       <HeaderMobileRoot>
-        <MobileTopMenu>
-          <MobileTopMenuLogo>
+        <HeaderMobileTopMenu>
+          <HeaderMobileTopMenuLogo>
             <HeaderLogo />
-          </MobileTopMenuLogo>
-          <MobileTopMenuToggle />
-        </MobileTopMenu>
+          </HeaderMobileTopMenuLogo>
+          <HeaderMobileTopMenuToggle />
+        </HeaderMobileTopMenu>
         <MobileMenuContent />
       </HeaderMobileRoot>
     </HeaderRoot>
@@ -299,52 +299,52 @@ export const Default: Story = {
 export const WithTopBar: Story = {
   render: () => (
     <HeaderRoot>
-      <TopMenu>
-        <TopMenuNav aria-label="main-top-bar">
-          <TopMenuLink asChild>
+      <HeaderDesktopTopMenu>
+        <HeaderDesktopTopMenuNav aria-label="main-top-bar">
+          <HeaderDesktopTopMenuLink asChild>
             <Link href="/">Aide</Link>
-          </TopMenuLink>
-          <TopMenuLink asChild>
+          </HeaderDesktopTopMenuLink>
+          <HeaderDesktopTopMenuLink asChild>
             <Link href="/">Contact</Link>
-          </TopMenuLink>
-        </TopMenuNav>
+          </HeaderDesktopTopMenuLink>
+        </HeaderDesktopTopMenuNav>
 
-        <TopMenuNav aria-label="locale-top-bar">
-          <TopMenuDropdown label="FR">
+        <HeaderDesktopTopMenuNav aria-label="locale-top-bar">
+          <HeaderDesktopTopMenuDropdown label="FR">
             <LanguageDropdownContent />
-          </TopMenuDropdown>
-        </TopMenuNav>
-      </TopMenu>
+          </HeaderDesktopTopMenuDropdown>
+        </HeaderDesktopTopMenuNav>
+      </HeaderDesktopTopMenu>
 
-      <MainMenu>
-        <MainMenuLogo>
+      <HeaderDesktopMainMenu>
+        <HeaderDesktopMainMenuLogo>
           <HeaderLogo />
-        </MainMenuLogo>
+        </HeaderDesktopMainMenuLogo>
 
-        <MainMenuNav>
-          <MainMenuLink asChild current>
+        <HeaderDesktopMainMenuNav>
+          <HeaderDesktopMainMenuLink asChild current>
             <Link href="/" aria-current="page">
               Accueil
             </Link>
-          </MainMenuLink>
-          <MainMenuLink asChild>
+          </HeaderDesktopMainMenuLink>
+          <HeaderDesktopMainMenuLink asChild>
             <Link href="/">Produits</Link>
-          </MainMenuLink>
-          <MainMenuLink asChild>
+          </HeaderDesktopMainMenuLink>
+          <HeaderDesktopMainMenuLink asChild>
             <Link href="/">À propos</Link>
-          </MainMenuLink>
-        </MainMenuNav>
+          </HeaderDesktopMainMenuLink>
+        </HeaderDesktopMainMenuNav>
 
         <HeaderActions />
-      </MainMenu>
+      </HeaderDesktopMainMenu>
 
       <HeaderMobileRoot>
-        <MobileTopMenu>
-          <MobileTopMenuLogo>
+        <HeaderMobileTopMenu>
+          <HeaderMobileTopMenuLogo>
             <HeaderLogo />
-          </MobileTopMenuLogo>
-          <MobileTopMenuToggle />
-        </MobileTopMenu>
+          </HeaderMobileTopMenuLogo>
+          <HeaderMobileTopMenuToggle />
+        </HeaderMobileTopMenu>
         <MobileMenuContent />
       </HeaderMobileRoot>
     </HeaderRoot>
@@ -354,36 +354,36 @@ export const WithTopBar: Story = {
 export const WithDropdowns: Story = {
   render: () => (
     <HeaderRoot>
-      <MainMenu>
-        <MainMenuLogo>
+      <HeaderDesktopMainMenu>
+        <HeaderDesktopMainMenuLogo>
           <HeaderLogo />
-        </MainMenuLogo>
+        </HeaderDesktopMainMenuLogo>
 
-        <MainMenuNav>
-          <MainMenuLink asChild>
+        <HeaderDesktopMainMenuNav>
+          <HeaderDesktopMainMenuLink asChild>
             <Link href="/">Accueil</Link>
-          </MainMenuLink>
-          <MainMenuDropdown label="Produits" current>
+          </HeaderDesktopMainMenuLink>
+          <HeaderDesktopMainMenuDropdown label="Produits" current>
             <ProductsDropdown />
-          </MainMenuDropdown>
-          <MainMenuDropdown label="Services">
+          </HeaderDesktopMainMenuDropdown>
+          <HeaderDesktopMainMenuDropdown label="Services">
             <ProductsDropdown />
-          </MainMenuDropdown>
-          <MainMenuLink asChild>
+          </HeaderDesktopMainMenuDropdown>
+          <HeaderDesktopMainMenuLink asChild>
             <Link href="/">Contact</Link>
-          </MainMenuLink>
-        </MainMenuNav>
+          </HeaderDesktopMainMenuLink>
+        </HeaderDesktopMainMenuNav>
 
         <HeaderActions />
-      </MainMenu>
+      </HeaderDesktopMainMenu>
 
       <HeaderMobileRoot>
-        <MobileTopMenu>
-          <MobileTopMenuLogo>
+        <HeaderMobileTopMenu>
+          <HeaderMobileTopMenuLogo>
             <HeaderLogo />
-          </MobileTopMenuLogo>
-          <MobileTopMenuToggle />
-        </MobileTopMenu>
+          </HeaderMobileTopMenuLogo>
+          <HeaderMobileTopMenuToggle />
+        </HeaderMobileTopMenu>
         <MobileMenuContent />
       </HeaderMobileRoot>
     </HeaderRoot>
@@ -393,36 +393,36 @@ export const WithDropdowns: Story = {
 export const MegaMenu: Story = {
   render: () => (
     <HeaderRoot>
-      <MainMenu>
-        <MainMenuLogo>
+      <HeaderDesktopMainMenu>
+        <HeaderDesktopMainMenuLogo>
           <HeaderLogo />
-        </MainMenuLogo>
+        </HeaderDesktopMainMenuLogo>
 
-        <MainMenuNav>
-          <MainMenuLink asChild>
+        <HeaderDesktopMainMenuNav>
+          <HeaderDesktopMainMenuLink asChild>
             <Link href="/">Accueil</Link>
-          </MainMenuLink>
-          <MainMenuDropdown label="Solutions" mega current>
+          </HeaderDesktopMainMenuLink>
+          <HeaderDesktopMainMenuDropdown label="Solutions" mega current>
             <MegaMenuContent />
-          </MainMenuDropdown>
-          <MainMenuDropdown label="Produits">
+          </HeaderDesktopMainMenuDropdown>
+          <HeaderDesktopMainMenuDropdown label="Produits">
             <ProductsDropdown />
-          </MainMenuDropdown>
-          <MainMenuLink asChild>
+          </HeaderDesktopMainMenuDropdown>
+          <HeaderDesktopMainMenuLink asChild>
             <Link href="/">Contact</Link>
-          </MainMenuLink>
-        </MainMenuNav>
+          </HeaderDesktopMainMenuLink>
+        </HeaderDesktopMainMenuNav>
 
         <HeaderActions />
-      </MainMenu>
+      </HeaderDesktopMainMenu>
 
       <HeaderMobileRoot>
-        <MobileTopMenu>
-          <MobileTopMenuLogo>
+        <HeaderMobileTopMenu>
+          <HeaderMobileTopMenuLogo>
             <HeaderLogo />
-          </MobileTopMenuLogo>
-          <MobileTopMenuToggle />
-        </MobileTopMenu>
+          </HeaderMobileTopMenuLogo>
+          <HeaderMobileTopMenuToggle />
+        </HeaderMobileTopMenu>
         <MobileMenuContent />
       </HeaderMobileRoot>
     </HeaderRoot>
@@ -433,55 +433,67 @@ export const DarkHero: Story = {
   render: () => (
     <>
       <HeaderRoot isOverlay textColor="light">
-        <TopMenu bgColor="#111" bgOpacity="0.2" textColor="light">
-          <TopMenuNav aria-label="main-top-bar">
-            <TopMenuLink asChild>
+        <HeaderDesktopTopMenu
+          bgColor="#111"
+          bgOpacity="0.2"
+          textColor="light"
+        >
+          <HeaderDesktopTopMenuNav aria-label="main-top-bar">
+            <HeaderDesktopTopMenuLink asChild>
               <Link href="/">Help</Link>
-            </TopMenuLink>
-            <TopMenuLink asChild>
+            </HeaderDesktopTopMenuLink>
+            <HeaderDesktopTopMenuLink asChild>
               <Link href="/">Contact</Link>
-            </TopMenuLink>
-          </TopMenuNav>
+            </HeaderDesktopTopMenuLink>
+          </HeaderDesktopTopMenuNav>
 
-          <TopMenuNav aria-label="locale-top-bar">
-            <TopMenuDropdown label="EN">
+          <HeaderDesktopTopMenuNav aria-label="locale-top-bar">
+            <HeaderDesktopTopMenuDropdown label="EN">
               <LanguageDropdownContent />
-            </TopMenuDropdown>
-          </TopMenuNav>
-        </TopMenu>
+            </HeaderDesktopTopMenuDropdown>
+          </HeaderDesktopTopMenuNav>
+        </HeaderDesktopTopMenu>
 
-        <MainMenu bgColor="#222" bgOpacity="0.2" textColor="light">
-          <MainMenuLogo>
+        <HeaderDesktopMainMenu
+          bgColor="#222"
+          bgOpacity="0.2"
+          textColor="light"
+        >
+          <HeaderDesktopMainMenuLogo>
             <HeaderLogo />
-          </MainMenuLogo>
+          </HeaderDesktopMainMenuLogo>
 
-          <MainMenuNav>
-            <MainMenuLink asChild current>
+          <HeaderDesktopMainMenuNav>
+            <HeaderDesktopMainMenuLink asChild current>
               <Link href="/" aria-current="page">
                 Home
               </Link>
-            </MainMenuLink>
-            <MainMenuLink asChild>
+            </HeaderDesktopMainMenuLink>
+            <HeaderDesktopMainMenuLink asChild>
               <Link href="/">Products</Link>
-            </MainMenuLink>
-            <MainMenuDropdown label="Solutions">
+            </HeaderDesktopMainMenuLink>
+            <HeaderDesktopMainMenuDropdown label="Solutions">
               <ProductsDropdown />
-            </MainMenuDropdown>
-            <MainMenuLink asChild>
+            </HeaderDesktopMainMenuDropdown>
+            <HeaderDesktopMainMenuLink asChild>
               <Link href="/">About</Link>
-            </MainMenuLink>
-          </MainMenuNav>
+            </HeaderDesktopMainMenuLink>
+          </HeaderDesktopMainMenuNav>
 
           <HeaderActions />
-        </MainMenu>
+        </HeaderDesktopMainMenu>
 
         <HeaderMobileRoot>
-          <MobileTopMenu bgColor="#222" bgOpacity="1" textColor="light">
-            <MobileTopMenuLogo>
+          <HeaderMobileTopMenu
+            bgColor="#222"
+            bgOpacity="1"
+            textColor="light"
+          >
+            <HeaderMobileTopMenuLogo>
               <HeaderLogo />
-            </MobileTopMenuLogo>
-            <MobileTopMenuToggle />
-          </MobileTopMenu>
+            </HeaderMobileTopMenuLogo>
+            <HeaderMobileTopMenuToggle />
+          </HeaderMobileTopMenu>
           <MobileMenuContent />
         </HeaderMobileRoot>
       </HeaderRoot>
@@ -530,67 +542,67 @@ export const LightHero: Story = {
   render: () => (
     <>
       <HeaderRoot isOverlay textColor="dark">
-        <TopMenu
+        <HeaderDesktopTopMenu
           bgColor="var(--color-grey-7)"
           bgOpacity="0.5"
           textColor="dark"
         >
-          <TopMenuNav aria-label="main-top-bar">
-            <TopMenuLink asChild>
+          <HeaderDesktopTopMenuNav aria-label="main-top-bar">
+            <HeaderDesktopTopMenuLink asChild>
               <Link href="/">Help</Link>
-            </TopMenuLink>
-            <TopMenuLink asChild>
+            </HeaderDesktopTopMenuLink>
+            <HeaderDesktopTopMenuLink asChild>
               <Link href="/">Contact</Link>
-            </TopMenuLink>
-          </TopMenuNav>
+            </HeaderDesktopTopMenuLink>
+          </HeaderDesktopTopMenuNav>
 
-          <TopMenuNav aria-label="locale-top-bar">
-            <TopMenuDropdown label="EN">
+          <HeaderDesktopTopMenuNav aria-label="locale-top-bar">
+            <HeaderDesktopTopMenuDropdown label="EN">
               <LanguageDropdownContent />
-            </TopMenuDropdown>
-          </TopMenuNav>
-        </TopMenu>
+            </HeaderDesktopTopMenuDropdown>
+          </HeaderDesktopTopMenuNav>
+        </HeaderDesktopTopMenu>
 
-        <MainMenu
+        <HeaderDesktopMainMenu
           bgColor="var(--color-white)"
           bgOpacity="0.2"
           textColor="dark"
         >
-          <MainMenuLogo>
+          <HeaderDesktopMainMenuLogo>
             <HeaderLogo />
-          </MainMenuLogo>
+          </HeaderDesktopMainMenuLogo>
 
-          <MainMenuNav>
-            <MainMenuLink asChild current>
+          <HeaderDesktopMainMenuNav>
+            <HeaderDesktopMainMenuLink asChild current>
               <Link href="/" aria-current="page">
                 Home
               </Link>
-            </MainMenuLink>
-            <MainMenuLink asChild>
+            </HeaderDesktopMainMenuLink>
+            <HeaderDesktopMainMenuLink asChild>
               <Link href="/">Products</Link>
-            </MainMenuLink>
-            <MainMenuDropdown label="Solutions">
+            </HeaderDesktopMainMenuLink>
+            <HeaderDesktopMainMenuDropdown label="Solutions">
               <ProductsDropdown />
-            </MainMenuDropdown>
-            <MainMenuLink asChild>
+            </HeaderDesktopMainMenuDropdown>
+            <HeaderDesktopMainMenuLink asChild>
               <Link href="/">About</Link>
-            </MainMenuLink>
-          </MainMenuNav>
+            </HeaderDesktopMainMenuLink>
+          </HeaderDesktopMainMenuNav>
 
           <HeaderActions />
-        </MainMenu>
+        </HeaderDesktopMainMenu>
 
         <HeaderMobileRoot>
-          <MobileTopMenu
+          <HeaderMobileTopMenu
             bgColor="var(--color-white)"
             bgOpacity="1"
             textColor="dark"
           >
-            <MobileTopMenuLogo>
+            <HeaderMobileTopMenuLogo>
               <HeaderLogo />
-            </MobileTopMenuLogo>
-            <MobileTopMenuToggle />
-          </MobileTopMenu>
+            </HeaderMobileTopMenuLogo>
+            <HeaderMobileTopMenuToggle />
+          </HeaderMobileTopMenu>
           <MobileMenuContent />
         </HeaderMobileRoot>
       </HeaderRoot>

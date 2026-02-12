@@ -1,13 +1,13 @@
 import clsx from 'clsx'
 import styles from '../Header.module.scss'
-import type { MobileTopMenuLogoTypes } from '../Header.types'
+import type { HeaderMobileTopMenuLogoTypes } from '../Header.types'
 
-export function MobileTopMenuLogo({
+export function HeaderMobileTopMenuLogo({
   ref,
   children,
   className,
   ...rest
-}: MobileTopMenuLogoTypes) {
+}: HeaderMobileTopMenuLogoTypes) {
   return (
     <div
       ref={ref}

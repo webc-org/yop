@@ -3,16 +3,16 @@ import clsx from 'clsx'
 import { Button } from 'components'
 import { ChevronDown } from 'lucide-react'
 import styles from '../Header.module.scss'
-import type { MobileMainMenuDropdownTypes } from '../Header.types'
+import type { HeaderMobileMainMenuDropdownTypes } from '../Header.types'
 
-export function MobileMainMenuDropdown({
+export function HeaderMobileMainMenuDropdown({
   ref,
   children,
   label,
   baseId,
   className,
   ...rest
-}: MobileMainMenuDropdownTypes) {
+}: HeaderMobileMainMenuDropdownTypes) {
   const [isExpanded, setIsExpanded] = useState(false)
   const generatedId = useId()
   const id = baseId || generatedId
