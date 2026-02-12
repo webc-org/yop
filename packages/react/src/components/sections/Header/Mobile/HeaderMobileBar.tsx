@@ -9,12 +9,12 @@ export function HeaderMobileBar({
   children,
   className,
   bgColor = 'var(--color-white)',
-  bgOpacity = 1,
+  bgOpacity = '1',
   style,
   ...rest
 }: HeaderMobileBarTypes) {
   const { isScrolled } = useHeader()
-  const opacity = isScrolled ? 1 : bgOpacity
+  const opacity = isScrolled ? '1' : bgOpacity
   const customStyles = {
     ...style,
     '--header-mobile-bg': bgColor,

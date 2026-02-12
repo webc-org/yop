@@ -10,12 +10,12 @@ export function HeaderTop({
   className,
   containerClassName,
   bgColor = 'var(--color-grey-7)',
-  bgOpacity = 1,
+  bgOpacity = '1',
   style,
   ...rest
 }: HeaderTopTypes) {
   const { isScrolled } = useHeader()
-  const opacity = isScrolled ? 1 : bgOpacity
+  const opacity = isScrolled ? '1' : bgOpacity
   const customStyles = {
     ...style,
     '--header-top-bg': bgColor,

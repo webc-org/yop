@@ -10,13 +10,13 @@ export function HeaderMain({
   className,
   containerClassName,
   bgColor = 'var(--color-white)',
-  bgOpacity = 1,
+  bgOpacity = '1',
   style,
   ...rest
 }: HeaderMainTypes) {
   const { isScrolled } = useHeader()
-  const opacity = isScrolled ? 1 : bgOpacity
-  const shadow = isScrolled || opacity === 1 ? 'var(--shadow-1)' : 'none'
+  const opacity = isScrolled ? '1' : bgOpacity
+  const shadow = isScrolled || opacity === '1' ? 'var(--shadow-1)' : 'none'
   const customStyles = {
     ...style,
     '--header-main-bg': bgColor,

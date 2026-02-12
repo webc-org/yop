@@ -224,8 +224,8 @@ Root container providing context for mobile menu state.
 |------|------|---------|-------------|
 | `children` | `ReactNode` | - | Header content |
 | `baseId` | `string` | auto | Base ID for accessibility |
-| `transparent` | `boolean` | `false` | Transparent background mode |
-| `textColor` | `'light' \| 'dark'` | `'light'` | Text/icon color when transparent |
+| `isOverlay` | `boolean` | `false` | Overlay mode (header floats over content) |
+| `textColor` | `'light' \| 'dark'` | - | Text/icon color |
 | `className` | `string` | - | Additional CSS class |
 
 ### HeaderTop
@@ -236,6 +236,8 @@ Top utility bar (help links, language selector).
 |------|------|---------|-------------|
 | `children` | `ReactNode` | - | TopNav components |
 | `containerClassName` | `string` | - | Inner container class |
+| `bgColor` | `string` | `'var(--color-grey-7)'` | Background color (CSS value or hex) |
+| `bgOpacity` | `string` | `'1'` | Background opacity (`'0'`–`'1'`). Forced to `'1'` on scroll |
 
 ### HeaderMain
 
@@ -245,6 +247,18 @@ Main navigation bar with logo and links.
 |------|------|---------|-------------|
 | `children` | `ReactNode` | - | Logo, Nav components |
 | `containerClassName` | `string` | - | Inner container class |
+| `bgColor` | `string` | `'var(--color-white)'` | Background color (CSS value or hex) |
+| `bgOpacity` | `string` | `'1'` | Background opacity (`'0'`–`'1'`). Forced to `'1'` on scroll |
+
+### HeaderMobileBar
+
+Mobile bar containing logo and toggle.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | - | Logo and toggle |
+| `bgColor` | `string` | `'var(--color-white)'` | Background color (CSS value or hex) |
+| `bgOpacity` | `string` | `'1'` | Background opacity (`'0'`–`'1'`). Forced to `'1'` on scroll |
 
 ### HeaderMainDropdown
 
@@ -284,15 +298,23 @@ All link components support `asChild` for custom link rendering and `current` fo
 | `HeaderMobileLink` | Link in mobile menu |
 | `HeaderMobileDropdownLink` | Link in mobile dropdown |
 
-## Transparent Header
+## Overlay Header
 
-Use `transparent` and `textColor` to overlay the header on hero content. The header becomes solid on scroll (10px threshold).
+Use `overlay` and `textColor` to float the header over hero content. Each bar controls its own background via `bgColor`/`bgOpacity`. On scroll, opacity is forced to `1` (fully opaque) and a shadow appears.
 
 ```tsx
-<HeaderRoot transparent textColor="light">
-  <HeaderTop>{/* top bar */}</HeaderTop>
-  <HeaderMain>{/* main nav */}</HeaderMain>
-  <HeaderMobile>{/* mobile menu */}</HeaderMobile>
+<HeaderRoot isOverlay textColor="light">
+  <HeaderTop bgColor="#111" bgOpacity="0.2">
+    {/* top bar */}
+  </HeaderTop>
+  <HeaderMain bgColor="#222" bgOpacity="0.2">
+    {/* main nav */}
+  </HeaderMain>
+  <HeaderMobile>
+    <HeaderMobileBar bgColor="#222" bgOpacity="1">
+      {/* mobile bar */}
+    </HeaderMobileBar>
+  </HeaderMobile>
 </HeaderRoot>
 
 <Banner backgroundImage="..." overlay="dark" className="h-screen">
@@ -300,22 +322,23 @@ Use `transparent` and `textColor` to overlay the header on hero content. The hea
 </Banner>
 ```
 
-Add `header-transparent` class to `<body>` to remove default header padding:
+Add `header-overlay` class to `<body>` to remove default header padding:
 
 ```html
-<body class="with-main-nav with-mobile-nav header-transparent">
+<body class="with-main-nav with-mobile-nav header-overlay">
 ```
 
 ### Context
 
-`useHeader()` exposes `isScrolled` and `textColor` for consumer-side logic (e.g. logo swap):
+`useHeader()` exposes state for consumer-side logic (e.g. logo swap):
 
 ```tsx
-const { isScrolled, textColor } = useHeader()
+const { isOverlay, isScrolled, textColor } = useHeader()
 ```
 
 | Value | Type | Description |
 |-------|------|-------------|
+| `isOverlay` | `boolean` | `true` when overlay mode is active |
 | `isScrolled` | `boolean` | `true` when page has scrolled past threshold |
 | `textColor` | `'light' \| 'dark'` | Current text color variant |
 
@@ -326,6 +349,7 @@ const { isScrolled, textColor } = useHeader()
 - Escape key closes mobile menu
 - Body scroll locked when mobile menu open
 - Focus returns to toggle on close
+- Bar backgrounds solidify (`opacity: 1`) and gain shadow on scroll
 
 ## Accessibility
 
@@ -388,9 +412,9 @@ const { isScrolled, textColor } = useHeader()
 ## Strapi Integration
 
 ```tsx
-<HeaderRoot>
+<HeaderRoot isOverlay={isOverlay} textColor={textColor}>
   {data.topBar && (
-    <HeaderTop>
+    <HeaderTop bgColor={data.topBar.bgColor} bgOpacity={data.topBar.bgOpacity}>
       <HeaderTopNav>
         {data.topBar.links.map(link => (
           <HeaderTopLink key={link.id} asChild>
@@ -412,7 +436,7 @@ const { isScrolled, textColor } = useHeader()
     </HeaderTop>
   )}
 
-  <HeaderMain>
+  <HeaderMain bgColor={data.mainNav?.bgColor} bgOpacity={data.mainNav?.bgOpacity}>
     <HeaderMainLogo>
       <Logo href="/">
         <Image
@@ -446,7 +470,10 @@ const { isScrolled, textColor } = useHeader()
   </HeaderMain>
 
   <HeaderMobile>
-    {/* dynamic mobile menu */}
+    <HeaderMobileBar bgColor={data.mobileNav?.bgColor} bgOpacity={data.mobileNav?.bgOpacity}>
+      {/* mobile bar */}
+    </HeaderMobileBar>
+    {/* mobile menu */}
   </HeaderMobile>
 </HeaderRoot>
 ```

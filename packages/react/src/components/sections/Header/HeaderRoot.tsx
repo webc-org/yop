@@ -16,7 +16,7 @@ export function HeaderRoot({
   baseId,
   children,
   className,
-  overlay = false,
+  isOverlay = false,
   textColor,
   style,
   ...rest
@@ -99,7 +99,7 @@ export function HeaderRoot({
       registerNav,
       getNavCount,
       isScrolled,
-      overlay,
+      isOverlay,
       textColor,
     }),
     [
@@ -110,7 +110,7 @@ export function HeaderRoot({
       registerNav,
       getNavCount,
       isScrolled,
-      overlay,
+      isOverlay,
       textColor,
     ]
   )
